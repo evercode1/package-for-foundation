@@ -1,0 +1,45 @@
+{
+    "name": "evercode1/foundation-maker",
+    "type": "library",
+    "description": "Artisan Foundation Maker",
+    "keywords": [
+        "evercode1",
+        "foundation-maker"
+    ],
+    "homepage": "https://github.com/evercode1/foundation-maker",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Bill Keck",
+            "email": "",
+            "homepage": "",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "illuminate/support": "~5.1",
+        "php" : "~5.6|~7.0"
+    },
+
+    "autoload": {
+        "psr-4": {
+            "Evercode1\\FoundationMaker\\": "src"
+
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Evercode1\\FoundationMaker\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
+
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+
+}
