@@ -1,0 +1,21 @@
+<?php
+
+use Illuminate\Foundation\Testing\WithoutMiddleware;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
+
+class :::upperCaseModelName:::Test extends TestCase
+{
+    public function testCreateNew:::upperCaseModelName:::()
+    {
+
+        $randomString = str_random(10);
+
+        $this->visit('/:::modelPath:::/create')
+             ->type($randomString, ':::field_name:::')
+             ->select(1, ':::parent_id:::')
+             ->press('Create')
+             ->seePageIs('/:::modelPath:::');
+    }
+
+}

@@ -2,8 +2,11 @@
 
 namespace Evercode1\FoundationMaker\Tokens;
 
+use Evercode1\FoundationMaker\Tokens\TokenTraits\FormatsModel;
+
 class Tokens
 {
+    use FormatsModel;
 
     public $model;
     public $masterPage;
@@ -48,6 +51,8 @@ class Tokens
 
         $folderName = $this->formatFolderName();
 
+        $gridApiRoute = 'api/' . $this->formatFolderName() . '-data';
+
         $gridName = $this->formatVueGridName() . '-grid';
 
         $masterPage = $this->masterPage;
@@ -60,6 +65,8 @@ class Tokens
         $modelAttribute = $this->formatInstanceVariable() . '->' . $field_name;
 
         $modelId = $this->formatInstanceVariable() . '->id';
+
+        $modelInstance = $this->formatInstanceVariable();
 
         $modelPath = $this->formatModelPath($this->model);
 
@@ -93,7 +100,7 @@ class Tokens
 
         $useParent = 'use App\\' . $this->formatModel($this->parent);
 
-        $vueApiRoute = 'api/' . $this->formatFolderName() . '-data';
+        $vueApiControllerMethod = $this->formatVueApiControllerMethod();
 
         //create token array using compact
 
@@ -109,12 +116,14 @@ class Tokens
                           'endGridName',
                           'field_name',
                           'folderName',
+                          'gridApiRoute',
                           'gridName',
                           'masterPage',
                           'migrationModel',
                           'model',
                           'modelAttribute',
                           'modelId',
+                          'modelInstance',
                           'modelPath',
                           'modelResults',
                           'modelRoute',
@@ -131,7 +140,7 @@ class Tokens
                           'upperCaseModelName',
                           'useModel',
                           'useParent',
-                          'vueApiRoute');
+                          'vueApiControllerMethod');
 
         return $tokens;
 
@@ -221,25 +230,7 @@ class Tokens
 
     }
 
-    private function formatModel($model)
-    {
-        $model = camel_case($model);
-        $model = str_singular($model);
-        return $model = ucwords($model);
 
-    }
-
-    private function formatModelPath($model)
-    {
-        $model = preg_split('/(?=[A-Z])/',$model);
-
-        $model = implode('-', $model);
-
-        $model = ltrim($model, '-');
-
-        return $model = strtolower($model);
-
-    }
 
     private function formatFolderName()
     {
@@ -282,6 +273,14 @@ class Tokens
         $modelMethod = $this->formatInstanceVariable();
 
         return $modelMethod . 'Data';
+
+    }
+
+    private function formatVueApiControllerMethod()
+    {
+        $modelMethod = $this->formatInstanceVariable();
+
+        return 'vue' . $modelMethod . 'Data';
 
     }
 

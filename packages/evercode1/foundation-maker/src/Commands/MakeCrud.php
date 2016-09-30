@@ -54,15 +54,20 @@ class MakeCrud extends Command
 
         if ( $crud->makeCrudFiles($input) ) {
 
-            dd($crud->crudTokens);
-
             $this->sendSuccessMessage();
+
+            return;
+
+        } else {
+
+
+            $this->error('Oops, something went wrong!');
 
             return;
 
         }
 
-        $this->error('Oops, something went wrong!');
+
 
     }
 
@@ -72,10 +77,6 @@ class MakeCrud extends Command
         $this->info('Crud Files successfully created');
 
     }
-
-
-
-
 
 
 }

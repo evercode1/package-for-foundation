@@ -2,12 +2,13 @@
 
 namespace Evercode1\FoundationMaker\RemoveCommands;
 
-use Evercode1\FoundationMaker\Templates\Boom;
+use Evercode1\FoundationMaker\RemoveCommands\RemoveTraits\RemovesFiles;
+use Evercode1\FoundationMaker\Tokens\TokenTraits\FormatsModel;
 use Illuminate\Console\Command;
-use Carbon\Carbon;
 
 class RemoveCrud extends Command
 {
+    use FormatsModel, RemovesFiles;
     /**
      * The name and signature of the console command.
      *
@@ -15,15 +16,13 @@ class RemoveCrud extends Command
      */
     protected $signature = 'remove:crud
                            {ModelName}';
+
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Remove Crud';
-
-
-
+    protected $description = 'remove crud files';
 
 
     /**
@@ -42,15 +41,36 @@ class RemoveCrud extends Command
      *
      * @return mixed
      */
-    public function handle(Boom $pow)
+    public function handle()
     {
 
+        $this->modelName = $this->formatModel($this->argument('ModelName'));
 
-        dd($pow->pulse());
+        $this->modelPath = $this->formatModelPath($this->argument('ModelName'));
+
+        $this->setPaths();
+
+        if ( $this->deleteCrudFiles() ) {
+
+            $this->sendSuccessMessage();
+
+            return;
+
+        }
+
+        $this->error('Oops, something went wrong!');
+
+
+    }
+
+    private function sendSuccessMessage()
+    {
+
+        $this->info('Crud Files successfully removed');
 
     }
 
 
 
-
 }
+

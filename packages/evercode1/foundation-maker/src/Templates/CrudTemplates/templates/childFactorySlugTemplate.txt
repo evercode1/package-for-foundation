@@ -1,0 +1,19 @@
+\n
+// Begin :::upperCaseModelName::: Factory
+
+$factory->define(App\:::upperCaseModelName:::::class, function (Faker\Generator $faker) {
+
+       $uniqueWord = $faker->unique()->word;
+       $slug = str_slug($uniqueWord, "-");
+
+    return [
+
+        ':::field_name:::' => $uniqueWord,
+        ':::parent_id:::' => $faker->numberBetween($min = 1, $max = 4),
+        'slug' => $slug,
+
+    ];
+
+});
+
+// End :::upperCaseModelName::: Factory

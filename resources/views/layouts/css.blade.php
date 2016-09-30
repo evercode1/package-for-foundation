@@ -1,6 +1,6 @@
 <!-- Latest compiled and minified CSS -->
 
-<link href="/css/app.css" rel="stylesheet">
+<link href="{{ elixir('css/all.css') }}" rel="stylesheet">
 
 
 
