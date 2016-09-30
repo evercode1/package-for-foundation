@@ -27,6 +27,10 @@ Route::get('/home', 'HomeController@index');
 
 
 
+
+
+
+
 // Begin Widget Routes
 
 Route::get('api/widget-data', 'ApiController@widgetData');

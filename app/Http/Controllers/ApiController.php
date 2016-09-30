@@ -9,12 +9,17 @@ use App\Queries\GridQueries\GridQuery;
 class ApiController extends Controller
 {
 
-// Begin Widget Api Data Grid Method
+    
+
+
+
+    // Begin Widget Api Data Grid Method
 
     public function widgetData(Request $request)
     {
 
         return GridQuery::sendData($request, 'WidgetQuery');
+
     }
 
     // End Widget Api Data Grid Method

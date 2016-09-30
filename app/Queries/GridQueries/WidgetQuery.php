@@ -13,7 +13,7 @@ class WidgetQuery implements DataQuery
         $rows = DB::table('widgets')
                     ->select('id as Id',
                              'name as Name',
-                             DB::raw('DATE_FORMAT(created_at, 
+                             DB::raw('DATE_FORMAT(created_at,
                              "%m-%d-%Y") as Created'))
                     ->orderBy($column, $direction)
                     ->paginate(10);
@@ -29,7 +29,7 @@ class WidgetQuery implements DataQuery
         $rows = DB::table('widgets')
                 ->select('id as Id',
                          'name as Name',
-                         DB::raw('DATE_FORMAT(created_at, 
+                         DB::raw('DATE_FORMAT(created_at,
                                  "%m-%d-%Y") as Created'))
                 ->where('name', 'like', '%' . $keyword . '%')
                 ->orderBy($column, $direction)

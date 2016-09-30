@@ -9,15 +9,15 @@ use App\Queries\GridQueries\GridQuery;
 class ApiController extends Controller
 {
 
-    // Begin :::Model::: Api Data Grid Method
+    // Begin :::model::: Api Data Grid Method
 
     public function :::apiControllerMethod:::(Request $request)
     {
 
-        return GridQuery::sendData($request, ':::Model:::Query');
+        return GridQuery::sendData($request, ':::model:::Query');
 
     }
 
-    // End :::Model::: Api Data Grid Method
+    // End :::model::: Api Data Grid Method
 
 }

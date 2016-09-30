@@ -54,6 +54,7 @@ trait RemovesFiles
     {
 
         $this->unlinkFiles['model'] = base_path('app/' . $this->modelName .'.php');
+        $this->unlinkFiles['modelQuery'] = base_path('app/Queries/GridQueries/' . $this->modelName .'Query.php');
         $this->unlinkFiles['controller'] = base_path('app/Http/Controllers/' . $this->modelName) . 'Controller.php';
         $this->unlinkFiles['test'] =  base_path('tests/' . $this->modelName . 'Test.php');
         $this->unlinkFiles['migration'] = $this->getMigrationFilePath($this->modelName);

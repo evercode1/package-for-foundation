@@ -4,7 +4,6 @@ namespace App\Queries\GridQueries;
 
 use Illuminate\Http\Request;
 use DB;
-use App\Queries\GridQueries\Contracts\DataQuery;
 
 
 class GridQuery
@@ -115,8 +114,6 @@ class GridQuery
         return response()->json($query->data($column, $direction));
 
     }
-
-
 
 
 }

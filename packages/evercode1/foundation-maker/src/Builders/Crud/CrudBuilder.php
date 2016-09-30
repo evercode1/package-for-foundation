@@ -61,8 +61,8 @@ class CrudBuilder
         $this->fileWritePaths['migration'] = base_path() . '/database/migrations/' . date('Y_m_d_His') . '_create_' .$this->crudTokens['tableName'] . '_table'. '.php';
         $this->fileAppendPaths['factory'] = base_path() . '/database/factories/ModelFactory.php';
         $this->fileWritePaths['test'] = base_path() . '/tests/' .  $this->crudTokens['upperCaseModelName'] .  'Test.php';
-        $this->fileWritePaths['gridQuery'] = base_path() . '/app/Queries/GridQueries/' . 'GridQuery.php';
         $this->fileWritePaths['dataQuery'] = base_path() . '/app/Queries/GridQueries/Contracts/' . 'DataQuery.php';
+        $this->fileWritePaths['gridQuery'] = base_path() . '/app/Queries/GridQueries/' . 'GridQuery.php';
         $this->fileWritePaths['modelQuery'] = base_path() . '/app/Queries/GridQueries/' . $this->crudTokens['upperCaseModelName'] . 'Query.php';
 
     }
