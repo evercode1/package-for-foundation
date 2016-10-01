@@ -68,7 +68,7 @@ class CrudContentRouter
 
                 }
 
-                    return;
+
                     break;
 
 
@@ -107,7 +107,7 @@ class CrudContentRouter
 
                 } else {
 
-                    return;
+
                     break;
 
                 }

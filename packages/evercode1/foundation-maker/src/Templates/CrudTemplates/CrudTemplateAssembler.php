@@ -1,34 +1,23 @@
 <?php
 
-namespace Evercode1\FoundationMaker\Templates\MasterPageTemplates;
+namespace Evercode1\FoundationMaker\Templates\CrudTemplates;
 
 use Evercode1\FoundationMaker\Builders\ContentFormatters\ContentTraits\ReplacesTokens;
 
-class MasterPageTemplateAssembler
+class CrudTemplateAssembler
 {
     use ReplacesTokens;
 
-    public $masterPageName;
-    public $appName;
     public $tokens = [];
     public $model;
     public $modelPath;
 
-    public function __construct($masterPageName, $appName)
+    public function __construct($tokens)
     {
 
-        $this->masterPageName = $masterPageName;
-        $this->appName = $appName;
-        $this->setTokens();
-
-
-    }
-
-    private function setTokens()
-    {
-
-        $this->tokens['masterPageName'] = $this->masterPageName;
-        $this->tokens['appName'] = $this->appName;
+        $this->tokens = $tokens;
+        $this->model = $tokens['model'];
+        $this->modelPath = $tokens['modelPath'];
 
 
     }
@@ -40,24 +29,19 @@ class MasterPageTemplateAssembler
 
             $this->addCustomTokens();
 
-            $file = base_path(). '/app/Templates/MasterPageTemplates/templates/' . $template . '.txt';
+            $file = base_path(). '/app/Templates/CrudTemplates/templates/' . $template . '.txt';
 
             $content = file_get_contents($file);
 
-
             return $this->insertTokensIntoContent($content, $this->tokens);
 
-
         }
-
 
         $file = __DIR__ . '/templates/' . $template . '.txt';
 
         $content = file_get_contents($file);
 
-
         return $this->insertTokensIntoContent($content, $this->tokens);
-
 
     }
 
@@ -68,9 +52,5 @@ class MasterPageTemplateAssembler
 
         $this->tokens = $this->mergeUniqueTokens($this->tokens, $addTokens->customTokens);
 
-
     }
-
 }
-
-
