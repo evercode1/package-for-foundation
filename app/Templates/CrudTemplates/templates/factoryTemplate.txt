@@ -1,0 +1,14 @@
+
+// Begin :::upperCaseModelName::: Factory
+
+$factory->define(App\:::upperCaseModelName:::::class, function (Faker\Generator $faker) {
+
+    return [
+
+        ':::field_name:::' => $faker->unique()->word,
+
+    ];
+
+});
+
+// End :::upperCaseModelName::: Factory

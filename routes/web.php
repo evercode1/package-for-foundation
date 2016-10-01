@@ -46,3 +46,9 @@ Route::get('widget/{id}-{slug?}', ['as' => 'widget.show', 'uses' => 'WidgetContr
 Route::resource('widget', 'WidgetController', ['except' => ['show', 'create']]);
 
 // End Widget Routes
+
+
+
+
+
+

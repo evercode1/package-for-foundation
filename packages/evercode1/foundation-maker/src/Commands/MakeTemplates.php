@@ -3,7 +3,7 @@
 namespace Evercode1\FoundationMaker\Commands;
 
 use Illuminate\Console\Command;
-use Evercode1\FoundationMaker\Builders\Writers\CopyTemplates;
+use Evercode1\FoundationMaker\Templates\CopyTemplates;
 
 
 class MakeTemplates extends Command

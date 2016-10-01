@@ -1,0 +1,12 @@
+
+// Begin :::upperCaseModelName::: Routes
+
+Route::any(':::gridApiRoute:::', 'ApiController@:::apiControllerMethod:::');
+
+Route::get(':::modelPath:::/create', ['as' => ':::modelPath:::.create', 'uses' => ':::upperCaseModelName:::Controller@create']);
+
+Route::get(':::modelPath:::/{id}-{slug?}', ['as' => ':::modelPath:::.show', 'uses' => ':::upperCaseModelName:::Controller@show']);
+
+Route::resource(':::modelPath:::', ':::upperCaseModelName:::Controller', ['except' => ['show', 'create']]);
+
+// End :::upperCaseModelName::: Routes
