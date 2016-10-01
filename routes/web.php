@@ -52,3 +52,27 @@ Route::resource('widget', 'WidgetController', ['except' => ['show', 'create']]);
 
 
 
+
+
+
+// Begin :::upperCaseModelName::: Routes
+
+Route::get('api/boom-data', 'ApiController@boomData');
+
+Route::resource(':::modelPath:::', ':::upperCaseModelName:::Controller');
+
+// End :::upperCaseModelName::: Routes
+// Begin :::upperCaseModelName::: Routes
+
+Route::get('api/boom-data', 'ApiController@boomData');
+
+Route::resource(':::modelPath:::', ':::upperCaseModelName:::Controller');
+
+// End :::upperCaseModelName::: Routes
+// Begin :::upperCaseModelName::: Routes
+
+Route::get('api/boom-data', 'ApiController@boomData');
+
+Route::resource(':::modelPath:::', ':::upperCaseModelName:::Controller');
+
+// End :::upperCaseModelName::: Routes

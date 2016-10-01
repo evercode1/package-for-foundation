@@ -27,6 +27,7 @@ class CustomTokens
         // define your custom tokens and use the following syntax
         // in the actual templates:  :::sampleToken:::
         // the token will be replaced with the values you define here.
+        // you can overwrite existing tokens by defining them again here.
 
         $sampleToken = $this->model . ' any-formatting';
         $getCreative = 'you can put anything you want here';

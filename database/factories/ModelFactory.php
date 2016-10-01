@@ -61,3 +61,45 @@ $factory->define(App\Widget::class, function (Faker\Generator $faker) {
 
 
 
+
+
+
+// Begin :::upperCaseModelName::: Factory
+
+$factory->define(App\:::upperCaseModelName:::::class, function (Faker\Generator $faker) {
+
+    return [
+
+        'name' => $faker->unique()->word,
+
+    ];
+
+});
+
+// End :::upperCaseModelName::: Factory
+// Begin :::upperCaseModelName::: Factory
+
+$factory->define(App\:::upperCaseModelName:::::class, function (Faker\Generator $faker) {
+
+    return [
+
+        'name' => $faker->unique()->word,
+
+    ];
+
+});
+
+// End :::upperCaseModelName::: Factory
+// Begin :::upperCaseModelName::: Factory
+
+$factory->define(App\:::upperCaseModelName:::::class, function (Faker\Generator $faker) {
+
+    return [
+
+        'name' => $faker->unique()->word,
+
+    ];
+
+});
+
+// End :::upperCaseModelName::: Factory

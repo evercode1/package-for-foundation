@@ -19,22 +19,15 @@ class CopyTemplates
 
         $src = dirname(__FILE__);
 
-        $this->recurse_copy($src, $dst);
+        $this->recursive_copy($src, $dst);
 
-        $unwantedFiles [] = base_path() . '/app/Templates/CopyTemplates.php';
-        $unwantedFiles [] = base_path() . '/app/Templates/CrudTemplates/CrudTemplateAssembler.php';
-
-        foreach ($unwantedFiles as $file){
-
-            unlink($file);
-
-        }
+        $this->cleanUp();
 
         return true;
 
     }
 
-    private function recurse_copy($src,$dst) {
+    private function recursive_copy($src,$dst) {
 
         $dir = opendir($src);
 
@@ -46,7 +39,7 @@ class CopyTemplates
 
                 if ( is_dir($src . '/' . $file) ) {
 
-                    $this->recurse_copy($src . '/' . $file, $dst . '/' . $file);
+                    $this->recursive_copy($src . '/' . $file, $dst . '/' . $file);
 
                 } else {
 
@@ -62,8 +55,25 @@ class CopyTemplates
 
     }
 
+    /**
+     * @param $unwantedFiles
+     */
+    private function cleanUp()
+    {
+        $unwantedFiles [] = base_path() . '/app/Templates/CopyTemplates.php';
+        $unwantedFiles [] = base_path() . '/app/Templates/CrudTemplates/CrudTemplateAssembler.php';
 
+        foreach ($unwantedFiles as $file) {
 
+            unlink($file);
+
+        }
+
+        $oldFile = base_path() . '/app/Templates/CustomTokens.txt';
+        $newFile = base_path() . '/app/Templates/CustomTokens.php';
+
+        rename($oldFile, $newFile);
+    }
 
 
 }

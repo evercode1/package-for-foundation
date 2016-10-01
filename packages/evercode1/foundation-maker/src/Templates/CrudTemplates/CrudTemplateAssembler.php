@@ -54,9 +54,9 @@ class CrudTemplateAssembler
     private function addCustomTokens()
     {
 
-        $addedTokens = new \App\Templates\CustomTokens($this->model, $this->modelPath);
+        $addTokens = new \App\Templates\CustomTokens($this->model, $this->modelPath);
 
-        $this->tokens = array_merge($this->tokens, $addedTokens->customTokens);
+        $this->tokens = $this->mergeUniqueTokens($this->tokens, $addTokens->customTokens);
 
 
     }

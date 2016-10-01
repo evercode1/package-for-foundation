@@ -23,15 +23,23 @@ class CustomTokens
 
     private function addCustomTokens($model, $modelPath)
     {
+
         // define your custom tokens and use the following syntax
         // in the actual templates:  :::sampleToken:::
         // the token will be replaced with the values you define here.
+        // you can overwrite existing tokens by defining them again here.
 
         $sampleToken = $this->model . ' any-formatting';
         $getCreative = 'you can put anything you want here';
         $myToken = 'create custom formatting methods in the class, using ' . $this->model;
 
-        return $customTokens = compact('sampleToken');
+
+        // we will merge custom tokens into the existing tokens
+        // after returning.
+
+        return $customTokens = compact('sampleToken',
+                                       'getCreative',
+                                       'myToken');
 
 
     }

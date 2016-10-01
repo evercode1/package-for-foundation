@@ -71,7 +71,7 @@ class MakeTemplates extends Command
     private function sendSuccessMessage()
     {
 
-        $this->info('Crud Files successfully created');
+        $this->info('Templates successfully created');
 
     }
 
