@@ -4,13 +4,13 @@ namespace App\Queries\GridQueries;
 use DB;
 use App\Queries\GridQueries\Contracts\DataQuery;
 
-class WidgetQuery implements DataQuery
+class :::model:::Query implements DataQuery
 {
 
     public function data($column, $direction)
     {
 
-        $rows = DB::table('widgets')
+        $rows = DB::table(':::tableName:::')
                     ->select('id as Id',
                              'name as Name',
                              DB::raw('DATE_FORMAT(created_at,
@@ -26,7 +26,7 @@ class WidgetQuery implements DataQuery
     public function filteredData($column, $direction, $keyword)
     {
 
-        $rows = DB::table('widgets')
+        $rows = DB::table(':::tableName:::')
                 ->select('id as Id',
                          'name as Name',
                          DB::raw('DATE_FORMAT(created_at,

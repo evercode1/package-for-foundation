@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Widget;
+:::useModel:::;
 use Illuminate\Support\Facades\Redirect;
 
-class WidgetController extends Controller
+class :::upperCaseModelName:::Controller extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +17,7 @@ class WidgetController extends Controller
     public function index()
     {
 
-        return view('widget.index');
+        return view(':::modelPath:::.index');
 
     }
 
@@ -30,7 +30,7 @@ class WidgetController extends Controller
     public function create()
     {
 
-        return view('widget.create');
+        return view(':::modelPath:::.create');
 
     }
 
@@ -46,15 +46,15 @@ class WidgetController extends Controller
 
         $this->validate($request, [
 
-            'name' => 'required|unique:widgets|string|max:30',
+            ':::field_name:::' => 'required|unique::::tableName:::|string|max:30',
 
         ]);
 
-        $widget = Widget::create(['name' => $request->name]);
+        $:::modelInstance::: = :::upperCaseModelName:::::create([':::field_name:::' => $request->:::field_name:::]);
 
-        $widget->save();
+        $:::modelInstance:::->save();
 
-        return Redirect::route('widget.index');
+        return Redirect::route(':::modelPath:::.index');
 
     }
 
@@ -67,9 +67,9 @@ class WidgetController extends Controller
 
     public function show($id)
     {
-        $widget = Widget::findOrFail($id);
+        $:::modelInstance::: = :::upperCaseModelName:::::findOrFail($id);
 
-        return view('widget.show', compact('widget'));
+        return view(':::modelPath:::.show', compact(':::modelInstance:::'));
 
     }
 
@@ -82,9 +82,9 @@ class WidgetController extends Controller
 
     public function edit($id)
     {
-        $widget = Widget::findOrFail($id);
+        $:::modelInstance::: = :::upperCaseModelName:::::findOrFail($id);
 
-        return view('widget.edit', compact('widget'));
+        return view(':::modelPath:::.edit', compact(':::modelInstance:::'));
 
     }
 
@@ -100,16 +100,16 @@ class WidgetController extends Controller
     {
         $this->validate($request, [
 
-            'name' => 'required|string|max:40|unique:widgets,name,' .$id
+            ':::field_name:::' => 'required|string|max:40|unique::::tableName:::,:::field_name:::,' .$id
 
         ]);
 
-        $widget = Widget::findOrFail($id);
+        $:::modelInstance::: = :::upperCaseModelName:::::findOrFail($id);
 
-        $widget->update(['name' => $request->name]);
+        $:::modelInstance:::->update([':::field_name:::' => $request->:::field_name:::]);
 
 
-        return Redirect::route('widget.show', ['widget' => $widget]);
+        return Redirect::route(':::modelPath:::.show', [':::modelInstance:::' => $:::modelInstance:::]);
 
     }
 
@@ -122,9 +122,9 @@ class WidgetController extends Controller
 
     public function destroy($id)
     {
-        Widget::destroy($id);
+        :::upperCaseModelName:::::destroy($id);
 
-        return Redirect::route('widget.index');
+        return Redirect::route(':::modelPath:::.index');
 
     }
 }

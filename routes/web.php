@@ -35,44 +35,41 @@ Route::get('/home', 'HomeController@index');
 
 
 
+
+
+
+
+
+
+
+
+
+
+// Begin :::upperCaseModelName::: Routes
+
+Route::get('api/boom-data', 'ApiController@boomData');
+
+Route::resource(':::modelPath:::', ':::upperCaseModelName:::Controller');
+
+// End :::upperCaseModelName::: Routes
+// Begin :::upperCaseModelName::: Routes
+
+Route::get('api/boom-data', 'ApiController@boomData');
+
+Route::resource(':::modelPath:::', ':::upperCaseModelName:::Controller');
+
+// End :::upperCaseModelName::: Routes
+// Begin :::upperCaseModelName::: Routes
+
+Route::get('api/boom-data', 'ApiController@boomData');
+
+Route::resource(':::modelPath:::', ':::upperCaseModelName:::Controller');
+
+// End :::upperCaseModelName::: Routes
 // Begin Widget Routes
 
-Route::any('api/widget-data', 'ApiController@widgetData');
+Route::get('api/widget-data', 'ApiController@widgetData');
 
-Route::get('widget/create', ['as' => 'widget.create', 'uses' => 'WidgetController@create']);
-
-Route::get('widget/{id}-{slug?}', ['as' => 'widget.show', 'uses' => 'WidgetController@show']);
-
-Route::resource('widget', 'WidgetController', ['except' => ['show', 'create']]);
+Route::resource('widget', 'WidgetController');
 
 // End Widget Routes
-
-
-
-
-
-
-
-
-
-// Begin :::upperCaseModelName::: Routes
-
-Route::get('api/boom-data', 'ApiController@boomData');
-
-Route::resource(':::modelPath:::', ':::upperCaseModelName:::Controller');
-
-// End :::upperCaseModelName::: Routes
-// Begin :::upperCaseModelName::: Routes
-
-Route::get('api/boom-data', 'ApiController@boomData');
-
-Route::resource(':::modelPath:::', ':::upperCaseModelName:::Controller');
-
-// End :::upperCaseModelName::: Routes
-// Begin :::upperCaseModelName::: Routes
-
-Route::get('api/boom-data', 'ApiController@boomData');
-
-Route::resource(':::modelPath:::', ':::upperCaseModelName:::Controller');
-
-// End :::upperCaseModelName::: Routes

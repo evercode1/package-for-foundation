@@ -1,4 +1,4 @@
-@extends('layouts-bak.master')
+@extends('layouts.master')
 
 @section('title')
 
