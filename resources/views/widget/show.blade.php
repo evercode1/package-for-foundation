@@ -27,9 +27,9 @@
                 <th>Id</th>
                 <th>Name</th>
                 <th>Date Created</th>
-                @if(Auth::user()->adminOrCurrentUserOwns($widget))
+
                     <th>Edit</th>
-                @endif
+
                 <th>Delete</th>
 
             </tr>
@@ -39,15 +39,15 @@
                 <td>{{ $widget->id }} </td>
                 <td> <a href="/widget/{{ $widget->id }}/edit">
                         {{ $widget->name }}</a></td>
-                <td>{{ $widget->created_at }}</td>
+                <td>{{ $widget->created_at->format('m-d-Y') }}</td>
 
-                @if(Auth::user()->adminOrCurrentUserOwns($widget))
+
 
                     <td> <a href="/widget/{{ $widget->id }}/edit">
 
                             <button type="button" class="btn btn-default">Edit</button></a></td>
 
-                @endif
+
 
                 <td>
                     <div class="form-group">

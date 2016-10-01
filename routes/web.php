@@ -31,10 +31,18 @@ Route::get('/home', 'HomeController@index');
 
 
 
+
+
+
+
 // Begin Widget Routes
 
-Route::get('api/widget-data', 'ApiController@widgetData');
+Route::any('api/widget-data', 'ApiController@widgetData');
 
-Route::resource('widget', 'WidgetController');
+Route::get('widget/create', ['as' => 'widget.create', 'uses' => 'WidgetController@create']);
+
+Route::get('widget/{id}-{slug?}', ['as' => 'widget.show', 'uses' => 'WidgetController@show']);
+
+Route::resource('widget', 'WidgetController', ['except' => ['show', 'create']]);
 
 // End Widget Routes
