@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 
-    @include(('layouts.meta'))
+    @include('layouts.meta')
 
     @yield('title')
 
@@ -14,22 +14,19 @@
 
 <body role="document">
 
-@include('layouts.facebook')
+    @include('layouts.nav')
 
-@include('layouts.nav')
-
-<div class="container theme-showcase" role="main">
+    <div class="container theme-showcase" role="main">
 
     @yield('content')
 
     @include('layouts.bottom')
 
-</div> <!-- /container -->
+    </div> <!-- /container -->
 
-@include('layouts.scripts')
+    @include('layouts.scripts')
 
-
-@yield('scripts')
+    @yield('scripts')
 
 </body>
 </html>

@@ -9,7 +9,8 @@ class Tokens
     use FormatsModel;
 
     public $model;
-    public $masterPage;
+    public $masterPageName;
+    public $appName;
     public $parent;
     public $child;
     public $slug;
@@ -17,8 +18,10 @@ class Tokens
 
     public function __construct(array $tokens)
     {
-        $this->setTokens($tokens);
-        $this->model = $this->formatModel($this->model);
+        $this->setProperties($tokens);
+
+        $this->setAndFormatModel();
+
         $this->tokens = $this->formatTokens();
 
     }
@@ -26,6 +29,7 @@ class Tokens
 
     public function formatTokens()
     {
+        $appName = $this->appName;
 
         $apiControllerMethod = $this->formatApiControllerMethod();
 
@@ -55,14 +59,13 @@ class Tokens
 
         $gridName = $this->formatVueGridName() . '-grid';
 
-        $masterPage = $this->masterPage;
+        $masterPageName = $this->masterPageName;
 
-        // need to account for compound model names
         $migrationModel = $this->formatMigrationModel($this->model);
 
         $model = $this->formatModel($this->model);
 
-        $modelAttribute = $this->formatInstanceVariable() . '->' . $field_name;
+        $modelAttribute = $this->formatInstanceVariable() . '->' . 'name';
 
         $modelId = $this->formatInstanceVariable() . '->id';
 
@@ -105,6 +108,7 @@ class Tokens
         //create token array using compact
 
         $tokens = compact('apiControllerMethod',
+                          'appName',
                           'chartApiRoute',
                           'chartApiControllerMethod',
                           'child',
@@ -118,7 +122,7 @@ class Tokens
                           'folderName',
                           'gridApiRoute',
                           'gridName',
-                          'masterPage',
+                          'masterPageName',
                           'migrationModel',
                           'model',
                           'modelAttribute',
@@ -146,7 +150,7 @@ class Tokens
 
     }
 
-    private function setTokens(array $tokens)
+    private function setProperties(array $tokens)
     {
         foreach ($tokens as $propertyName => $propertyValue) {
 
@@ -158,6 +162,13 @@ class Tokens
 
 
         }
+    }
+
+    private function setAndFormatModel()
+    {
+
+        $this->model = $this->formatModel($this->model);
+
     }
 
     private function tableName()

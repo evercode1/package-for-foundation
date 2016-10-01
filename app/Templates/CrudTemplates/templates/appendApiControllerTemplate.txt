@@ -1,5 +1,4 @@
     // Begin :::model::: Api Data Grid Method
-    // test :::sampleToken:::
 
     public function :::apiControllerMethod:::(Request $request)
     {
