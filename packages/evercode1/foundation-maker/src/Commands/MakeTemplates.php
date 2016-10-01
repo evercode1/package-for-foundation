@@ -43,11 +43,9 @@ class MakeTemplates extends Command
      *
      * @return mixed
      */
+
     public function handle(CopyTemplates $copier)
     {
-
-
-
 
         if ( $copier->copyTemplates() ) {
 

@@ -5,7 +5,7 @@ namespace Evercode1\FoundationMaker\RemoveCommands;
 use Evercode1\FoundationMaker\RemoveCommands\RemoveTraits\RemovesFiles;
 use Illuminate\Console\Command;
 
-class RemoveTemplates extends Command
+class RemoveMasterPage extends Command
 {
     use RemovesFiles;
     /**
@@ -13,14 +13,14 @@ class RemoveTemplates extends Command
      *
      * @var string
      */
-    protected $signature = 'remove:templates';
+    protected $signature = 'remove:master';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'remove templates folder from app';
+    protected $description = 'remove layouts folder and master page files from app';
 
 
     /**
@@ -42,7 +42,7 @@ class RemoveTemplates extends Command
     public function handle()
     {
 
-        $path = base_path('/app/Templates');
+        $path = base_path('/resources/views/layouts');
 
         if ( $this->deleteDirectoryAndFiles($path) ) {
 
@@ -60,7 +60,7 @@ class RemoveTemplates extends Command
     private function sendSuccessMessage()
     {
 
-        $this->info('Template Files successfully removed');
+        $this->info('layouts folder and master page files successfully removed');
 
     }
 
