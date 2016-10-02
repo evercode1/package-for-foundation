@@ -136,9 +136,7 @@ class CrudFileWriter
 
                     $txt = $content->getContentFromTemplate($fileName, $this->crudTokens);
 
-                    $filePathWeWant = $filePath;
-
-                    $handle = fopen($filePathWeWant, "w");
+                    $handle = fopen($filePath, "w");
 
                     fwrite($handle, $txt);
 

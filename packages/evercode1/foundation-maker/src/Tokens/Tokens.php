@@ -33,6 +33,8 @@ class Tokens
 
         $apiControllerMethod = $this->formatApiControllerMethod();
 
+        $apiDataPath = 'api/' . $this->formatModelPath($this->model) . '-data';
+
         $chartApiRoute = 'api/' . $this->formatModelPath($this->model) . '-chart';
 
         $chartApiControllerMethod = $this->formatChartApiControllerMethod();
@@ -56,6 +58,8 @@ class Tokens
         $folderName = $this->formatFolderName();
 
         $gridApiRoute = 'api/' . $this->formatFolderName() . '-data';
+
+        $gridComponentName = $this->model . 'Grid';
 
         $gridName = $this->formatVueGridName() . '-grid';
 
@@ -108,6 +112,7 @@ class Tokens
         //create token array using compact
 
         $tokens = compact('apiControllerMethod',
+                          'apiDataPath',
                           'appName',
                           'chartApiRoute',
                           'chartApiControllerMethod',
@@ -121,6 +126,7 @@ class Tokens
                           'field_name',
                           'folderName',
                           'gridApiRoute',
+                          'gridComponentName',
                           'gridName',
                           'masterPageName',
                           'migrationModel',

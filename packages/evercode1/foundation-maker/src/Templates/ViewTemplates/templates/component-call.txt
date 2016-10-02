@@ -1,0 +1,5 @@
+<!-- Begin :::upperCaseModelName:::Grid -->
+
+Vue.component(':::gridName:::', require('./components/:::upperCaseModelName:::Grid.vue'));
+
+<!-- End :::upperCaseModelName:::Grid -->

@@ -1,8 +1,0 @@
-
-// Begin :::upperCaseModelName::: Routes
-
-Route::get(':::gridApiRoute:::', 'ApiController@:::apiControllerMethod:::');
-
-Route::resource(':::modelPath:::', ':::upperCaseModelName:::Controller');
-
-// End :::upperCaseModelName::: Routes

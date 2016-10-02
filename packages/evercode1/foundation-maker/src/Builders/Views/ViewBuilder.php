@@ -8,34 +8,22 @@ use Evercode1\FoundationMaker\Tokens\Tokens;
 class ViewBuilder
 {
 
-    public $model;
-
-    public $modelPath;
-
-    public $masterPageName;
-
-    public $slug;
-
-    public $indexOnly;
-
     public $initialValues = [];
 
     public $fileWritePaths = [];
 
-    public $fileAppendPaths = [];
-
-    public $crudTokens = [];
+    public $tokens = [];
 
     public function makeViewDirectory()
     {
 
-        if (file_exists(base_path('/resources/views/' . $this->modelPath))) {
+        if (file_exists(base_path('/resources/views/' . $this->tokens['modelPath']))) {
 
             return false;
 
         }
 
-        mkdir('/resources/views/' . $this->modelPath);
+        mkdir('/resources/views/' . $this->tokens['modelPath']);
 
 
         return true;
@@ -72,11 +60,9 @@ class ViewBuilder
     private function writeViewFiles()
     {
 
-        $writer = new ViewsFileWriter($this->fileWritePaths,
-            $this->fileAppendPaths,
-            $this->crudTokens);
+        $writer = new ViewsFileWriter($this->fileWritePaths, $this->tokens);
 
-        $writer->writeAllViewsFiles();
+        $writer->writeAllViewFiles();
 
         return true;
 
@@ -88,7 +74,7 @@ class ViewBuilder
 
         $this->setInput($input);
 
-        $this->setCrudTokens();
+        $this->setTokens();
 
         $this->setFilePaths();
 
@@ -97,21 +83,37 @@ class ViewBuilder
     private function setFilePaths()
     {
 
-        $this->fileWritePaths['index'] = base_path() . '/resources/views/' . $this->crudTokens['upperCaseModelName'] . '.php';
-        $this->fileWritePaths['create'] = base_path() . '/app/Http/Controllers/' . $this->crudTokens['controllerName'] . '.php';
-        $this->fileWritePaths['edit'] = base_path() . '/app/Http/Controllers/ApiController.php';
-        $this->fileWritePaths['show'] = base_path() . '/database/migrations/' . date('Y_m_d_His') . '_create_' .$this->crudTokens['tableName'] . '_table'. '.php';
-        $this->fileAppendPaths['factory'] = base_path() . '/database/factories/ModelFactory.php';
+        $this->fileWritePaths['index'] = base_path() . '/resources/views/'
+                                                     . $this->tokens['modelPath']
+                                                     . '/index.blade.php';
+
+        $this->fileWritePaths['create'] = base_path() . '/resources/views/'
+                                                      . $this->tokens['modelPath']
+                                                      . '/create.blade.php';
+
+        $this->fileWritePaths['edit'] = base_path() . '/resources/views/'
+                                                    . $this->tokens['modelPath']
+                                                    . '/edit.blade.php';
+
+        $this->fileWritePaths['show'] = base_path() . '/resources/views/'
+                                                    . $this->tokens['modelPath']
+                                                    . '/show.blade.php';
+
+        $this->fileWritePaths['component'] = base_path() . '/resources/assets/js/components/'
+                                                          . $this->tokens['gridComponentName']
+                                                          . '.vue';
+
+        $this->fileWritePaths['component-call'] = base_path() . '/resources/assets/js/app.js';
 
 
     }
 
-    private function setCrudTokens()
+    private function setTokens()
     {
 
         $tokenBuilder = new Tokens($this->initialValues);
 
-        $this->crudTokens = $tokenBuilder->tokens;
+        $this->tokens = $tokenBuilder->tokens;
 
     }
 
@@ -121,20 +123,15 @@ class ViewBuilder
 
     private function setInput($input)
     {
-        $this->initialValues['model'] = $input['model'];
+        $this->initialValues['model'] = $input['ModelName'];
 
-        $this->initialValues['slug'] = $input['slug'];
+        $this->initialValues['masterPageName'] = $input['MasterPage'];
+
+        $this->initialValues['slug'] = $input['Slug'];
 
         $this->initialValues['parent'] = isset($input['parent']) ? $input['parent'] : false;
 
         $this->initialValues['child'] = isset($input['child']) ? $input['child'] : false;
     }
-
-
-
-
-
-
-
 
 }

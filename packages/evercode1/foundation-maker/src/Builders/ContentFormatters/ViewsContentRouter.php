@@ -43,13 +43,11 @@ class ViewsContentRouter
 
                 break;
 
-            case 'appJs' :
+            case 'component-call' :
 
-                return $this->buildTemplate($tokens, 'appJs');
+                return $this->buildTemplate($tokens, 'component-call');
 
                 break;
-
-
 
 
             default:

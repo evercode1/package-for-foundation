@@ -8,8 +8,6 @@ class ViewTemplateAssembler
 {
     use ReplacesTokens;
 
-    public $masterPageName;
-    public $appName;
     public $tokens = [];
     public $model;
     public $modelPath;
@@ -18,6 +16,8 @@ class ViewTemplateAssembler
     {
 
         $this->setTokens($tokens);
+        $this->model = $tokens['model'];
+        $this->modelPath = $tokens['modelPath'];
 
 
     }

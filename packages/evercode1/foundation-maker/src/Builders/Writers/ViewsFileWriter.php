@@ -9,16 +9,14 @@ class ViewsFileWriter
 {
 
     public $fileWritePaths;
-    public $fileAppendPaths;
-    public $crudTokens = [];
+    public $tokens = [];
     public $content;
 
-    public function __construct($fileWritePaths, $fileAppendPaths, Array $crudTokens)
+    public function __construct($fileWritePaths, Array $tokens)
     {
 
         $this->fileWritePaths = $fileWritePaths;
-        $this->fileAppendPaths = $fileAppendPaths;
-        $this->crudTokens = $crudTokens;
+        $this->tokens = $tokens;
         $this->content = new ViewsContentRouter();
 
 
@@ -29,8 +27,6 @@ class ViewsFileWriter
 
         $this->writeEachFile($this->fileWritePaths, $this->content);
 
-        $this->appendEachFile($this->fileAppendPaths, $this->content);
-
     }
 
     private function writeEachFile(array $fileWritePaths, ViewsContentRouter $content)
@@ -40,30 +36,10 @@ class ViewsFileWriter
 
             switch($fileName){
 
-                case 'apiController' :
+                case 'index' :
 
-                    if(file_exists($this->fileWritePaths['apiController'])){
 
-                        $fileExists = true;
-
-                        $txt = $content->getContentFromTemplate('apiController', $this->crudTokens);
-
-                        $contents = file_get_contents($this->fileWritePaths['apiController']);
-
-                        $classParts = explode('{', $contents, 2);
-
-                        $txt = $classParts[0]. "{\n\n" . $txt . "\n\n"  . $classParts[1];
-
-                        $handle = fopen($filePath, "w");
-
-                        fwrite($handle, $txt);
-
-                        fclose($handle);
-
-                        break;
-                    }
-
-                    $txt = $content->getContentFromTemplate('apiController', $this->crudTokens);
+                    $txt = $content->getContentFromTemplate('index', $this->tokens);
 
                     $handle = fopen($filePath, "w");
 
@@ -73,39 +49,9 @@ class ViewsFileWriter
 
                     break;
 
-                case 'dataQuery' :
+                case 'create' :
 
-                    if(file_exists($this->fileWritePaths['dataQuery'])){
-
-                        break;
-                    }
-
-                    $queryDirectory = '/app/Queries';
-
-                    if (! file_exists($queryDirectory)) {
-
-                        mkdir(base_path($queryDirectory));
-
-                    }
-
-                    $gridQueriesDirectory = 'app/Queries/GridQueries';
-
-                    if (! file_exists($gridQueriesDirectory)) {
-
-                        mkdir(base_path($gridQueriesDirectory));
-
-                    }
-
-                    $contractsDirectory = 'app/Queries/GridQueries/Contracts';
-
-                    if (! file_exists($contractsDirectory)) {
-
-                        mkdir(base_path($contractsDirectory));
-
-                    }
-
-
-                    $txt = $content->getContentFromTemplate('dataQuery', $this->crudTokens);
+                    $txt = $content->getContentFromTemplate('create', $this->tokens);
 
                     $handle = fopen($filePath, "w");
 
@@ -115,15 +61,10 @@ class ViewsFileWriter
 
                     break;
 
-                case 'gridQuery' :
-
-                    if(file_exists($this->fileWritePaths['gridQuery'])){
-
-                        break;
-                    }
+                case 'edit' :
 
 
-                    $txt = $content->getContentFromTemplate('gridQuery', $this->crudTokens);
+                    $txt = $content->getContentFromTemplate('edit', $this->tokens);
 
                     $handle = fopen($filePath, "w");
 
@@ -133,13 +74,44 @@ class ViewsFileWriter
 
                     break;
 
-                case 'test':
+                case 'show':
 
-                    $txt = $content->getContentFromTemplate($fileName, $this->crudTokens);
+                    $txt = $content->getContentFromTemplate('show', $this->tokens);
 
-                    $filePathWeWant = $filePath;
+                    $handle = fopen($filePath, "w");
 
-                    $handle = fopen($filePathWeWant, "w");
+                    fwrite($handle, $txt);
+
+                    fclose($handle);
+
+
+                    break;
+
+                case 'component':
+
+                    $txt = $content->getContentFromTemplate('component', $this->tokens);
+
+
+                    $handle = fopen($filePath, "w");
+
+                    fwrite($handle, $txt);
+
+                    fclose($handle);
+
+
+                    break;
+
+                case 'component-call':
+
+                    $txt = $content->getContentFromTemplate('component-call', $this->tokens);
+
+                    $contents = file_get_contents($this->fileWritePaths['component-call']);
+
+                    $classParts = explode('tweak this setup for your needs.\n */', $contents, 2);
+
+                    $txt = $classParts[0]. "tweak this setup for your needs.\n */\n\n" . $txt . "\n\n"  . $classParts[1];
+
+                    $handle = fopen($filePath, "w");
 
                     fwrite($handle, $txt);
 
@@ -152,7 +124,7 @@ class ViewsFileWriter
 
                     if ( ! is_array($fileName)) {
 
-                        $txt = $content->getContentFromTemplate($fileName, $this->crudTokens);
+                        $txt = $content->getContentFromTemplate($fileName, $this->tokens);
 
                         $handle = fopen($filePath, "w");
 
@@ -167,29 +139,6 @@ class ViewsFileWriter
 
         }
     }
-
-    private function appendEachFile(array $fileAppendPaths, ViewsContentRouter $content)
-    {
-
-        foreach ($fileAppendPaths as $fileName => $filePath) {
-
-            if (!is_array($fileName)) {
-
-                $txt = $content->getContentFromTemplate($fileName, $this->crudTokens);
-
-                $handle = fopen($filePath, "a");
-
-                fwrite($handle, $txt);
-
-                fclose($handle);
-            }
-
-        }
-
-    }
-
-
-
 
 
 }
