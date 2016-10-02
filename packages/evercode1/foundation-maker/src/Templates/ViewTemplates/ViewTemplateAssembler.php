@@ -1,0 +1,73 @@
+<?php
+
+namespace Evercode1\FoundationMaker\Templates\ViewTemplates;
+
+use Evercode1\FoundationMaker\Builders\ContentFormatters\ContentTraits\ReplacesTokens;
+
+class ViewTemplateAssembler
+{
+    use ReplacesTokens;
+
+    public $masterPageName;
+    public $appName;
+    public $tokens = [];
+    public $model;
+    public $modelPath;
+
+    public function __construct($tokens)
+    {
+
+        $this->setTokens($tokens);
+
+
+    }
+
+    private function setTokens($tokens)
+    {
+
+        $this->tokens = $tokens;
+
+
+    }
+
+    public function assembleTemplate($template)
+    {
+
+        if (file_exists(base_path(). '/app/Templates')){
+
+            $this->addCustomTokens();
+
+            $file = base_path(). '/app/Templates/ViewTemplates/templates/' . $template . '.txt';
+
+            $content = file_get_contents($file);
+
+
+            return $this->insertTokensIntoContent($content, $this->tokens);
+
+
+        }
+
+
+        $file = __DIR__ . '/templates/' . $template . '.txt';
+
+        $content = file_get_contents($file);
+
+
+        return $this->insertTokensIntoContent($content, $this->tokens);
+
+
+    }
+
+    private function addCustomTokens()
+    {
+
+        $addTokens = new \App\Templates\CustomTokens($this->model, $this->modelPath);
+
+        $this->tokens = $this->mergeUniqueTokens($this->tokens, $addTokens->customTokens);
+
+
+    }
+
+}
+
+

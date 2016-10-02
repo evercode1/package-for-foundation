@@ -1,0 +1,51 @@
+@extends('layouts.:::masterPage:::')
+
+@section('title')
+
+    <title>Edit :::upperCaseModelName:::</title>
+
+@endsection
+
+@section('content')
+
+
+        <ol class='breadcrumb'>
+        <li><a href='/'>Home</a></li>
+        <li><a href=':::modelRoute:::'>:::modelsUpperCase:::</a></li>
+        <li><a href=':::modelRoute:::/{{$:::modelId:::}}'>{{$:::modelAttribute:::}}</a></li>
+        <li class='active'>Edit</li>
+        </ol>
+
+        <h1>Edit :::upperCaseModelName:::</h1>
+
+        <hr/>
+
+
+        <form class="form" role="form" method="POST" action="{{ url(':::modelRoute:::/'. $:::modelId:::) }}">
+        <input type="hidden" name="_method" value="patch">
+        {{ csrf_field() }}
+
+        <!-- :::field_name::: Form Input -->
+            <div class="form-group{{ $errors->has(':::field_name:::') ? ' has-error' : '' }}">
+                <label class="control-label">:::upperCaseModelName::: Name</label>
+
+                    <input type="text" class="form-control" name=":::field_name:::" value="{{ $:::modelAttribute::: }}">
+
+                    @if ($errors->has(':::field_name:::'))
+                        <span class="help-block">
+                                        <strong>{{ $errors->first(':::field_name:::') }}</strong>
+                                    </span>
+                    @endif
+
+            </div>
+
+            <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-lg">
+                        Edit
+                    </button>
+            </div>
+
+        </form>
+
+
+@endsection

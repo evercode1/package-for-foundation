@@ -14,25 +14,27 @@ class RemoveViews extends Command
      *
      * @var string
      */
+
     protected $signature = 'remove:views
                            {ModelName}';
+
 
     /**
      * The console command description.
      *
      * @var string
      */
+
     protected $description = 'remove view files';
 
-
-
-
+    public $folderName;
 
     /**
      * Create a new command instance.
      *
      * @return void
      */
+
     public function __construct()
     {
 
@@ -44,6 +46,7 @@ class RemoveViews extends Command
      *
      * @return mixed
      */
+
     public function handle()
     {
 

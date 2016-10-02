@@ -1,8 +1,9 @@
 <?php
 
-namespace Evercode1\ViewMaker;
+namespace Evercode1\FoundationMaker\Commands;
 
 use Illuminate\Console\Command;
+use Evercode1\FoundationMaker\Builders\Views\ViewBuilder;
 
 class MakeViews extends Command
 {
@@ -23,8 +24,8 @@ class MakeViews extends Command
      *
      * @var string
      */
-    protected $description = 'create views';
 
+    protected $description = 'create views';
 
 
     /**
@@ -32,6 +33,7 @@ class MakeViews extends Command
      *
      * @return void
      */
+
     public function __construct()
     {
 
@@ -43,15 +45,10 @@ class MakeViews extends Command
      *
      * @return mixed
      */
-    public function handle()
+    public function handle(ViewBuilder $builder)
     {
 
-
-        $this->setConfigFromInputs();
-
-
-
-        if ( $this->makeViewDirectory()->makeViewFiles($this->templateType) ) {
+        if ( $builder->makeViewFiles($this->argument()) ) {
 
             $this->sendSuccessMessage();
 
