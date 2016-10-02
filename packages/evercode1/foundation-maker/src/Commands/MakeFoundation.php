@@ -4,8 +4,9 @@ namespace Evercode1\FoundationMaker\Commands;
 
 use Illuminate\Console\Command;
 use Evercode1\FoundationMaker\Builders\Crud\CrudBuilder;
+use Evercode1\FoundationMaker\Builders\Views\ViewBuilder;
 
-class MakeCrud extends Command
+class MakeFoundation extends Command
 {
 
     /**
@@ -13,8 +14,9 @@ class MakeCrud extends Command
      *
      * @var string
      */
-    protected $signature = 'make:crud
+    protected $signature = 'make:foundation
                            {ModelName}
+                           {MasterPage}
                            {Slug=false}';
 
     /**
@@ -22,9 +24,7 @@ class MakeCrud extends Command
      *
      * @var string
      */
-    protected $description = 'create model, migration, route, controller, factory, test, and component';
-
-
+    protected $description = 'create model, migration, route, controller, factory, test, component, and views';
 
 
 
@@ -44,7 +44,7 @@ class MakeCrud extends Command
      *
      * @return mixed
      */
-    public function handle(CrudBuilder $crud)
+    public function handle(CrudBuilder $crud, ViewBuilder $view)
     {
 
 
@@ -52,18 +52,21 @@ class MakeCrud extends Command
 
             $this->sendSuccessMessage();
 
-            return;
-
         } else {
 
-
             $this->error('Oops, something went wrong!');
+
+        }
+
+        if ( $view->makeViewFiles($this->argument()) ) {
+
+            $this->sendViewsSuccessMessage();
 
             return;
 
         }
 
-
+        $this->error('Oops, something went wrong!');
 
     }
 
@@ -71,6 +74,13 @@ class MakeCrud extends Command
     {
 
         $this->info('Crud Files successfully created');
+
+    }
+
+    private function sendViewsSuccessMessage()
+    {
+
+        $this->info('Views successfully created');
 
     }
 

@@ -107,9 +107,9 @@ class ViewsFileWriter
 
                     $contents = file_get_contents($this->fileWritePaths['component-call']);
 
-                    $classParts = explode(';', $contents, 2);
+                    $classParts = explode(';', $contents, 3);
 
-                    $txt = $classParts[0]. ";\n\n" . $txt . "\n\n"  . $classParts[1];
+                    $txt = $classParts[0]. ";". $classParts[1]. ";\n\n" . $txt . "\n\n"  . $classParts[2];
 
                     $handle = fopen($filePath, "w");
 

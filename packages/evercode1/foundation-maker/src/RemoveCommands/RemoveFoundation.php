@@ -2,11 +2,11 @@
 
 namespace Evercode1\FoundationMaker\RemoveCommands;
 
+use Evercode1\FoundationMaker\RemoveCommands\RemoveTraits\RemovesFiles;
 use Evercode1\FoundationMaker\Tokens\TokenTraits\FormatsModel;
 use Illuminate\Console\Command;
-use Evercode1\FoundationMaker\RemoveCommands\RemoveTraits\RemovesFiles;
 
-class RemoveViews extends Command
+class RemoveFoundation extends Command
 {
     use FormatsModel, RemovesFiles;
     /**
@@ -14,27 +14,24 @@ class RemoveViews extends Command
      *
      * @var string
      */
-
-    protected $signature = 'remove:views
+    protected $signature = 'remove:foundation
                            {ModelName}';
-
 
     /**
      * The console command description.
      *
      * @var string
      */
-
-    protected $description = 'remove view files';
+    protected $description = 'remove foundation files';
 
     public $folderName;
+
 
     /**
      * Create a new command instance.
      *
      * @return void
      */
-
     public function __construct()
     {
 
@@ -46,9 +43,29 @@ class RemoveViews extends Command
      *
      * @return mixed
      */
-
     public function handle()
     {
+
+        $this->modelName = $this->formatModel($this->argument('ModelName'));
+
+        $this->modelPath = $this->formatModelPath($this->argument('ModelName'));
+
+        $this->setCommandType($this->argument('command'));
+
+        $this->setCrudPaths();
+
+        if ( $this->deleteFiles() ) {
+
+            $this->sendSuccessMessage();
+
+
+        } else {
+
+            $this->error('Oops, something went wrong!');
+
+        }
+
+        $this->clearFilePaths();
 
         $this->folderName = $this->formatModelPath($this->argument('ModelName'));
 
@@ -77,12 +94,11 @@ class RemoveViews extends Command
     private function sendSuccessMessage()
     {
 
-        $this->info('Folder and View Files for ' . $this->folderName . ' successfully removed.');
+        $this->info('Crud Files successfully removed');
 
     }
 
 
 
-
-
 }
+

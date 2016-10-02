@@ -181,6 +181,11 @@ trait RemovesFiles
                 $this->removeApiControllerIfEmpty();
                 break;
 
+            case 'remove:foundation' :
+
+                $this->removeApiControllerIfEmpty();
+                break;
+
             default :
 
                 return true;
@@ -235,6 +240,25 @@ trait RemovesFiles
 
             return $existing;
         }
+    }
+
+    private function removeViewFolder($path)
+    {
+
+        return $this->deleteDirectoryAndFiles($path);
+
+
+    }
+
+    private function clearFilePaths()
+    {
+
+
+        $this->unlinkFiles = [];
+
+        $this->extractFromFiles = [];
+
+
     }
 
 
