@@ -14,7 +14,7 @@
         <li class='active'>Create</li>
     </ol>
 
-    <h2>Create a New Widget</h2>
+    <h2>Create a New Widgets</h2>
 
     <hr/>
 
@@ -22,11 +22,11 @@
 
     {{ csrf_field() }}
 
-    <!-- widget_name Form Input -->
+    <!-- name Form Input -->
 
         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
 
-            <label class="control-label">Widget Name</label>
+            <label class="control-label">Widgets Name</label>
 
             <input type="text" class="form-control" name="name" value="{{ old('name') }}">
 

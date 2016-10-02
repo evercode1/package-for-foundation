@@ -1,8 +1,8 @@
-@extends('layouts.:::masterPageName:::')
+@extends('layouts.master')
 
 @section('title')
 
-    <title>Edit :::upperCaseModelName:::</title>
+    <title>Edit Widget</title>
 
 @endsection
 
@@ -11,30 +11,30 @@
 
     <ol class='breadcrumb'>
         <li><a href='/'>Home</a></li>
-        <li><a href=':::modelRoute:::'>:::modelsUpperCase:::</a></li>
-        <li><a href=':::modelRoute:::/{{$:::modelId:::}}'>{{$:::modelAttribute:::}}</a></li>
+        <li><a href='/widget'>Widgets</a></li>
+        <li><a href='/widget/{{$widget->id}}'>{{$widget->name}}</a></li>
         <li class='active'>Edit</li>
     </ol>
 
-    <h1>Edit :::upperCaseModelName:::</h1>
+    <h1>Edit Widget</h1>
 
     <hr/>
 
 
-    <form class="form" role="form" method="POST" action="{{ url(':::modelRoute:::/'. $:::modelId:::)  }}">
+    <form class="form" role="form" method="POST" action="{{ url('/widget/'. $widget->id)  }}">
         <input type="hidden" name="_method" value="patch">
     {{ csrf_field() }}
 
     <!-- widget_name Form Input -->
         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-            <label class="control-label">:::upperCaseModelName::: Name</label>
+            <label class="control-label">Widget Name</label>
 
-            <input type="text" class="form-control" name="name" value="{{ $:::modelAttribute::: }}">
+            <input type="text" class="form-control" name="name" value="{{ $widget->name }}">
 
             @if ($errors->has('name'))
                 <span class="help-block">
-                <strong>{{ $errors->first('name') }}</strong>
-                </span>
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
             @endif
 
         </div>

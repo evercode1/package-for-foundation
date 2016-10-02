@@ -23,7 +23,7 @@ class ViewBuilder
 
         }
 
-        mkdir('/resources/views/' . $this->tokens['modelPath']);
+        mkdir(base_path('/resources/views/' . $this->tokens['modelPath']));
 
 
         return true;

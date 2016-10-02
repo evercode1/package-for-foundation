@@ -2,50 +2,55 @@
 
 @section('title')
 
-    <title>Edit Widget</title>
+    <title>Create a Widget</title>
 
 @endsection
 
 @section('content')
 
-
     <ol class='breadcrumb'>
         <li><a href='/'>Home</a></li>
         <li><a href='/widget'>Widgets</a></li>
-        <li><a href='/widget/{{$widget->id}}'>{{$widget->name}}</a></li>
-        <li class='active'>Edit</li>
+        <li class='active'>Create</li>
     </ol>
 
-    <h1>Edit Widget</h1>
+    <h2>Create a New Widget</h2>
 
     <hr/>
 
+    <form class="form" role="form" method="POST" action="{{ url('/widget') }}">
 
-    <form class="form" role="form" method="POST" action="{{ url('/widget/'. $widget->id)  }}">
-        <input type="hidden" name="_method" value="patch">
     {{ csrf_field() }}
 
     <!-- widget_name Form Input -->
+
         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+
             <label class="control-label">Widget Name</label>
 
-            <input type="text" class="form-control" name="name" value="{{ $widget->name }}">
+            <input type="text" class="form-control" name="name" value="{{ old('name') }}">
 
             @if ($errors->has('name'))
+
                 <span class="help-block">
                 <strong>{{ $errors->first('name') }}</strong>
                 </span>
+
             @endif
 
         </div>
 
+
         <div class="form-group">
+
             <button type="submit" class="btn btn-primary btn-lg">
-                Edit
+
+                Create
+
             </button>
+
         </div>
 
     </form>
-
 
 @endsection

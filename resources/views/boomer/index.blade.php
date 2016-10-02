@@ -19,7 +19,7 @@
 
     <widget-grid></widget-grid>
 
-    <div> <a href="widget/create">
+    <div> <a href="/widget/create">
             <button type="button" class="btn btn-lg btn-primary">
                 Create New
             </button></a>
