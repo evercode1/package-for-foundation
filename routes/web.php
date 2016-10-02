@@ -66,6 +66,9 @@ Route::get('api/boom-data', 'ApiController@boomData');
 Route::resource(':::modelPath:::', ':::upperCaseModelName:::Controller');
 
 // End :::upperCaseModelName::: Routes
+
+
+
 // Begin Widget Routes
 
 Route::get('api/widget-data', 'ApiController@widgetData');

@@ -48,9 +48,11 @@ class RemoveCrud extends Command
 
         $this->modelPath = $this->formatModelPath($this->argument('ModelName'));
 
-        $this->setPaths();
+        $this->setCommandType($this->argument('command'));
 
-        if ( $this->deleteCrudFiles() ) {
+        $this->setCrudPaths();
+
+        if ( $this->deleteFiles() ) {
 
             $this->sendSuccessMessage();
 

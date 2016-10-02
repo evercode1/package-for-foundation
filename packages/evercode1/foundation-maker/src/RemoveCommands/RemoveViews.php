@@ -52,10 +52,16 @@ class RemoveViews extends Command
 
         $this->folderName = $this->formatModelPath($this->argument('ModelName'));
 
+        $this->modelName = $this->formatModel($this->argument('ModelName'));
+
+        $this->setCommandType($this->argument('command'));
+
+        $this->setViewPaths();
+
 
         $path = base_path('resources/views/'. $this->folderName);
 
-        if ( $this->removeViewFiles($path) ) {
+        if ( $this->removeViewFolder($path) && $this->deleteFiles() ) {
 
             $this->sendSuccessMessage();
 
@@ -76,7 +82,7 @@ class RemoveViews extends Command
     }
 
 
-    private function removeViewFiles($path)
+    private function removeViewFolder($path)
     {
 
         return $this->deleteDirectoryAndFiles($path);

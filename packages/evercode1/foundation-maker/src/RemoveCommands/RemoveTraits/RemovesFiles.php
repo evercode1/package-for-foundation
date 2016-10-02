@@ -2,10 +2,11 @@
 
 namespace Evercode1\FoundationMaker\RemoveCommands\RemoveTraits;
 
-use App\Http\Controllers\ApiController;
 
 trait RemovesFiles
 {
+
+    private $commandType;
 
     private $unlinkFiles = [];
 
@@ -31,13 +32,21 @@ trait RemovesFiles
             \RecursiveIteratorIterator::CHILD_FIRST
         );
 
-        foreach ($files as $fileinfo) {
-            $todo = ($fileinfo->isDir() ? 'rmdir' : 'unlink');
-            $todo($fileinfo->getRealPath());
+        foreach ($files as $fileInfo) {
+            $todo = ($fileInfo->isDir() ? 'rmdir' : 'unlink');
+            $todo($fileInfo->getRealPath());
         }
 
         return rmdir($path);
 
+
+
+    }
+
+    public function setCommandType($commandType)
+    {
+
+        $this->commandType = $commandType;
 
 
     }
@@ -50,7 +59,7 @@ trait RemovesFiles
 
     }
 
-    private function setPaths()
+    private function setCrudPaths()
     {
 
         $this->unlinkFiles['model'] = base_path('app/' . $this->modelName .'.php');
@@ -61,6 +70,12 @@ trait RemovesFiles
         $this->extractFromFiles['Factory'] = base_path('database/factories/ModelFactory.php');
         $this->extractFromFiles['Routes'] = base_path('routes/web.php');
         $this->extractFromFiles['Api Data Grid Method'] = base_path('app/Http/Controllers/ApiController.php');
+    }
+
+    private function setViewPaths(){
+
+        $this->unlinkFiles['component'] = base_path('resources/assets/js/components/' . $this->modelName .'Grid.vue');
+        $this->extractFromFiles['Grid Component Call'] = base_path('resources/assets/js/app.js');
     }
 
 
@@ -88,12 +103,14 @@ trait RemovesFiles
 
 
 
-    private function deleteCrudFiles()
+    private function deleteFiles()
     {
 
-        foreach ($this->unlinkFiles as $crudFile){
 
-            unlink($crudFile);
+
+        foreach ($this->unlinkFiles as $file){
+
+            unlink($file);
         }
 
         $this->extractMethodsFromFiles();
@@ -110,9 +127,24 @@ trait RemovesFiles
 
         foreach($this->extractFromFiles as $type => $file){
 
-            $start = '// Begin ' . $this->modelName . ' ' .  $type ;
 
-            $end = '// End ' . $this->modelName . ' ' . $type;
+            if ( str_contains($file, '.js')){
+
+                $start = '<!-- Begin ' . $this->modelName . ' ' .  $type . ' -->';
+
+                $end = '<!-- End ' . $this->modelName . ' ' . $type . ' -->';
+
+
+            } else {
+
+                $start = '// Begin ' . $this->modelName . ' ' .  $type ;
+
+                $end = '// End ' . $this->modelName . ' ' . $type;
+
+
+            }
+
+
 
             $replaceWith = "";
 
@@ -134,7 +166,30 @@ trait RemovesFiles
 
         }
 
-        $this->removeApiControllerIfEmpty();
+        $this->cleanUp();
+
+
+    }
+
+    private function cleanUp()
+    {
+
+        switch ($this->commandType){
+
+            case 'remove:crud' :
+
+                $this->removeApiControllerIfEmpty();
+                break;
+
+            default :
+
+                return true;
+
+
+
+        }
+
+
 
     }
 

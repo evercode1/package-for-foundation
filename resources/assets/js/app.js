@@ -7,13 +7,11 @@
 
 require('./bootstrap');
 
-<!-- Begin WidgetGrid -->
+<!-- Begin Widget Grid Component Call -->
 
 Vue.component('widget-grid', require('./components/WidgetGrid.vue'));
 
-<!-- End WidgetGrid -->
-
-
+<!-- End Widget Grid Component Call -->
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
