@@ -1,0 +1,1 @@
+/** This file is for the calls to Vue.js components */

@@ -103,7 +103,7 @@ class ViewBuilder
                                                           . $this->tokens['gridComponentName']
                                                           . '.vue';
 
-        $this->fileWritePaths['component-call'] = base_path() . '/resources/assets/js/app.js';
+        $this->fileWritePaths['components'] = base_path() . '/resources/assets/js/components.js';
 
 
     }

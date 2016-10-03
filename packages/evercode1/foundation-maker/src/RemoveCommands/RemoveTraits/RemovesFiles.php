@@ -75,7 +75,7 @@ trait RemovesFiles
     private function setViewPaths(){
 
         $this->unlinkFiles['component'] = base_path('resources/assets/js/components/' . $this->modelName .'Grid.vue');
-        $this->extractFromFiles['Grid Component Call'] = base_path('resources/assets/js/app.js');
+        $this->extractFromFiles['Grid Component Call'] = base_path('resources/assets/js/components.js');
     }
 
 

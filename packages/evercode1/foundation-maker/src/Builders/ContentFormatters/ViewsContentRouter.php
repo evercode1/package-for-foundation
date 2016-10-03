@@ -43,9 +43,9 @@ class ViewsContentRouter
 
                 break;
 
-            case 'component-call' :
+            case 'components' :
 
-                return $this->buildTemplate($tokens, 'component-call');
+                return $this->buildTemplate($tokens, 'components');
 
                 break;
 

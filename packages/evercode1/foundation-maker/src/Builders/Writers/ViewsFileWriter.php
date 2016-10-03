@@ -101,17 +101,11 @@ class ViewsFileWriter
 
                     break;
 
-                case 'component-call':
+                case 'components':
 
-                    $txt = $content->getContentFromTemplate('component-call', $this->tokens);
+                    $txt = $content->getContentFromTemplate('components', $this->tokens);
 
-                    $contents = file_get_contents($this->fileWritePaths['component-call']);
-
-                    $classParts = explode(';', $contents, 3);
-
-                    $txt = $classParts[0]. ";". $classParts[1]. ";\n\n" . $txt . "\n\n"  . $classParts[2];
-
-                    $handle = fopen($filePath, "w");
+                    $handle = fopen($filePath, "a");
 
                     fwrite($handle, $txt);
 

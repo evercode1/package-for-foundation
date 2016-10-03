@@ -9,6 +9,7 @@ class FoundationMakerServiceProvider extends ServiceProvider
 
     protected $commands = [
 
+        'Evercode1\FoundationMaker\Commands\MakeAssets',
         'Evercode1\FoundationMaker\Commands\MakeCrud',
         'Evercode1\FoundationMaker\Commands\MakeFoundation',
         'Evercode1\FoundationMaker\Commands\MakeMasterPage',
