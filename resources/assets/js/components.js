@@ -1,3 +1,5 @@
+/** This file is for the calls to Vue.js components *//** Begin Widget Grid Component Call */
 
-/** This file is for you Vue.js component calls */
+Vue.component('widget-grid', require('./components/WidgetGrid.vue'));
 
+/** End Widget Grid Component Call */

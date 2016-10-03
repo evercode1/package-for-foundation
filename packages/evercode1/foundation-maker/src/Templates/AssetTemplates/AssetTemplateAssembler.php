@@ -25,7 +25,7 @@ class AssetTemplateAssembler
         }
 
 
-        $file = base_path(). '/app/Templates/AssetTemplates/templates/' . $template . '.txt';
+        $file = __DIR__ . '/templates/' . $template . '.txt';
 
         $content = file_get_contents($file);
 

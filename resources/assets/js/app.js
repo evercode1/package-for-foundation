@@ -1,4 +1,3 @@
-
 /**
  * First we will load all of this project's JavaScript dependencies which
  * include Vue and Vue Resource. This gives a great starting point for
@@ -14,6 +13,11 @@ require('./bootstrap');
  */
 
 Vue.component('example', require('./components/Example.vue'));
+
+/**
+ * Next, we will load in our Vue components that made by FoundationMaker.
+ * Those Vue components will be located in components.js.
+ */
 
 require('./components');
 
