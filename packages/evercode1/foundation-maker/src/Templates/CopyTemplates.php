@@ -62,7 +62,7 @@ class CopyTemplates
         $unwantedFiles [] = base_path() . '/app/Templates/CopyTemplates.php';
         $unwantedFiles [] = base_path() . '/app/Templates/CrudTemplates/CrudTemplateAssembler.php';
         $unwantedFiles [] = base_path() . '/app/Templates/MasterPageTemplates/MasterPageTemplateAssembler.php';
-
+        $unwantedFiles [] = base_path() . '/app/Templates/ViewTemplates/ViewTemplateAssembler.php';
 
         foreach ($unwantedFiles as $file) {
 

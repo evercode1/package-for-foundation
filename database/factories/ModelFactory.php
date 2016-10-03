@@ -23,9 +23,16 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 });
 
 
+// Begin Widget Factory
 
+$factory->define(App\Widget::class, function (Faker\Generator $faker) {
 
+    return [
 
+        'name' => $faker->unique()->word,
 
+    ];
 
+});
 
+// End Widget Factory

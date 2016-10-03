@@ -19,6 +19,24 @@ Vue.component('example', require('./components/Example.vue'));
 
 
 
+/** Begin Widget Grid Component Call */
+
+Vue.component('widget-grid', require('./components/WidgetGrid.vue'));
+
+/** End Widget Grid Component Call */
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 const app = new Vue({

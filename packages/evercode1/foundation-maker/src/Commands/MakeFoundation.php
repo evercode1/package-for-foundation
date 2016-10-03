@@ -24,7 +24,14 @@ class MakeFoundation extends Command
      *
      * @var string
      */
-    protected $description = 'create model, migration, route, controller, factory, test, component, and views';
+    protected $description = 'create model, 
+                              migration, 
+                              route, 
+                              controller, 
+                              factory, 
+                              test, 
+                              component, 
+                              and views';
 
 
 

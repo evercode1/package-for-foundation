@@ -130,9 +130,9 @@ trait RemovesFiles
 
             if ( str_contains($file, '.js')){
 
-                $start = '<!-- Begin ' . $this->modelName . ' ' .  $type . ' -->';
+                $start = '/** Begin ' . $this->modelName . ' ' .  $type . ' */';
 
-                $end = '<!-- End ' . $this->modelName . ' ' . $type . ' -->';
+                $end = '/** End ' . $this->modelName . ' ' . $type . ' */';
 
 
             } else {
@@ -200,7 +200,17 @@ trait RemovesFiles
 
     private function removeApiControllerIfEmpty()
     {
-        $file = $this->extractFromFiles['Api Data Grid Method'];
+
+        if (isset($this->extractFromFiles['Api Data Grid Method'])){
+
+            $file =  $this->extractFromFiles['Api Data Grid Method'];
+
+
+        } else {
+
+            return true;
+        }
+
 
         $content = file_get_contents($file);
 
