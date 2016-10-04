@@ -1,6 +1,6 @@
 <?php
 
-namespace Evercode1\FoundationMaker\Builders\ContentFormatters;
+namespace Evercode1\FoundationMaker\Builders\ContentRouters;
 
 use Evercode1\FoundationMaker\Templates\MasterPageTemplates\MasterPageTemplateAssembler;
 

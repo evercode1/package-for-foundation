@@ -1,8 +1,8 @@
 <?php
 
-namespace Evercode1\FoundationMaker\Builders\ContentFormatters;
+namespace Evercode1\FoundationMaker\Builders\ContentRouters;
 
-use Evercode1\FoundationMaker\Builders\ContentFormatters\ContentTraits\HasParentAndChildAndSlug;
+use Evercode1\FoundationMaker\Builders\ContentRouters\ContentTraits\HasParentAndChildAndSlug;
 use Evercode1\FoundationMaker\Templates\CrudTemplates\CrudTemplateAssembler;
 
 class CrudContentRouter
@@ -34,20 +34,6 @@ class CrudContentRouter
 
             case 'controller' :
 
-                if ($this->hasChild($tokens) && $this->isChild($tokens)){
-
-                    if ($this->hasSlug($tokens)){
-
-                        return $this->routeTemplate($tokens, 'childControllerSlugTemplate');
-                        break;
-                    }
-
-                    return $this->routeTemplate($tokens, 'childControllerTemplate');
-                    break;
-
-
-                }
-
                 if ($this->hasSlug($tokens)){
 
                     return $this->routeTemplate($tokens, 'controllerSlugTemplate');
@@ -74,18 +60,6 @@ class CrudContentRouter
 
 
             case 'factory' :
-
-                if ($this->hasChild($tokens) && $this->isChild($tokens)){
-
-                    if ($this->hasSlug($tokens)){
-
-                        return $this->routeTemplate($tokens, 'childFactorySlugTemplate');
-                        break;
-                    }
-
-                    return $this->routeTemplate($tokens, 'childFactoryTemplate');
-                    break;
-                }
 
 
                 if ($this->hasSlug($tokens)){
@@ -114,19 +88,6 @@ class CrudContentRouter
 
             case 'migration' :
 
-                if ($this->hasChild($tokens) && $this->isChild($tokens)){
-
-                    if ($this->hasSlug($tokens)){
-
-                        return $this->routeTemplate($tokens, 'childMigrationSlugTemplate');
-                        break;
-                    }
-
-                    return $this->routeTemplate($tokens, 'childMigrationTemplate');
-                    break;
-
-
-                }
 
                 if ($this->hasSlug($tokens)){
 
@@ -140,35 +101,6 @@ class CrudContentRouter
 
             case 'model' :
 
-                if ($this->hasParent($tokens) &&  $this->isParent($tokens)){
-
-                    if ($this->hasSlug($tokens)){
-
-                        return $this->routeTemplate($tokens, 'parentModelSlugTemplate');
-                        break;
-                    }
-
-                    return $this->routeTemplate($tokens, 'parentModelTemplate');
-                    break;
-
-                } else {
-
-                    if ($this->isChild($tokens)) {
-
-                        if ($this->hasSlug($tokens)){
-
-                            return $this->routeTemplate($tokens, 'childModelSlugTemplate');
-                            break;
-
-
-                        }
-
-                        return $this->routeTemplate($tokens, 'childModelTemplate');
-                        break;
-                    }
-
-                }
-
                 if ($this->hasSlug($tokens)){
 
                     return $this->routeTemplate($tokens, 'modelSlugTemplate');
@@ -181,22 +113,6 @@ class CrudContentRouter
 
             case 'modelQuery':
 
-
-                if ($this->hasChild($tokens) && $this->isChild($tokens)){
-
-                    if ($this->hasSlug($tokens)){
-
-                        return $this->routeTemplate($tokens, 'modelQueryChildSlugTemplate');
-                        break;
-
-
-                    }
-
-                        return $this->routeTemplate($tokens, 'modelQueryChildTemplate');
-                        break;
-
-
-                }
 
                 if ($this->hasSlug($tokens)){
 
@@ -223,14 +139,6 @@ class CrudContentRouter
 
             case 'test' :
 
-                if ($this->hasChild($tokens)  && $this->isChild($tokens)){
-
-
-                    return $this->routeTemplate($tokens, 'childTestTemplate');
-                    break;
-
-
-                }
 
 
                 return $this->routeTemplate($tokens, 'testTemplate');

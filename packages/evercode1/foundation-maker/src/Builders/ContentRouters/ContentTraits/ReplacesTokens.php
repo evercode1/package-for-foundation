@@ -1,6 +1,6 @@
 <?php
 
-namespace Evercode1\FoundationMaker\Builders\ContentFormatters\ContentTraits;
+namespace Evercode1\FoundationMaker\Builders\ContentRouters\ContentTraits;
 
 trait ReplacesTokens
 {

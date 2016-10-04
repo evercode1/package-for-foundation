@@ -51,3 +51,18 @@ Route::get('widget/{id}-{slug?}', ['as' => 'widget.show', 'uses' => 'WidgetContr
 Route::resource('widget', 'WidgetController', ['except' => ['show', 'create']]);
 
 // End Widget Routes
+
+
+
+
+// Begin Boom Routes
+
+Route::any('api/boom-data', 'ApiController@boomData');
+
+Route::get('boom/create', ['as' => 'boom.create', 'uses' => 'BoomController@create']);
+
+Route::get('boom/{id}-{slug?}', ['as' => 'boom.show', 'uses' => 'BoomController@show']);
+
+Route::resource('boom', 'BoomController', ['except' => ['show', 'create']]);
+
+// End Boom Routes

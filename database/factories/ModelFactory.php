@@ -50,3 +50,24 @@ $factory->define(App\Widget::class, function (Faker\Generator $faker) {
 });
 
 // End Widget Factory
+
+
+
+
+// Begin Boom Factory
+
+$factory->define(App\Boom::class, function (Faker\Generator $faker) {
+
+        $uniqueWord = $faker->unique()->word;
+        $slug = str_slug($uniqueWord, "-");
+
+    return [
+
+        'name' => $uniqueWord,
+        'slug' => $slug,
+
+    ];
+
+});
+
+// End Boom Factory

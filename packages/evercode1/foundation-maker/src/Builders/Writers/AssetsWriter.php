@@ -2,7 +2,7 @@
 
 namespace Evercode1\FoundationMaker\Builders\Writers;
 
-use Evercode1\FoundationMaker\Builders\ContentFormatters\AssetsContentRouter;
+use Evercode1\FoundationMaker\Builders\ContentRouters\AssetsContentRouter;
 
 class AssetsWriter
 {

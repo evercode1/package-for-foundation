@@ -2,10 +2,10 @@
 
 namespace Evercode1\FoundationMaker\Builders\Views;
 
-use Evercode1\FoundationMaker\Builders\Writers\ViewsFileWriter;
+use Evercode1\FoundationMaker\Builders\Writers\ParentViewsFileWriter;
 use Evercode1\FoundationMaker\Tokens\Tokens;
 
-class ViewBuilder
+class ParentViewBuilder
 {
 
     public $initialValues = [];
@@ -60,7 +60,7 @@ class ViewBuilder
     private function writeViewFiles()
     {
 
-        $writer = new ViewsFileWriter($this->fileWritePaths, $this->tokens);
+        $writer = new ParentViewsFileWriter($this->fileWritePaths, $this->tokens);
 
         $writer->writeAllViewFiles();
 
@@ -84,24 +84,24 @@ class ViewBuilder
     {
 
         $this->fileWritePaths['index'] = base_path() . '/resources/views/'
-                                                     . $this->tokens['modelPath']
-                                                     . '/index.blade.php';
+            . $this->tokens['modelPath']
+            . '/index.blade.php';
 
         $this->fileWritePaths['create'] = base_path() . '/resources/views/'
-                                                      . $this->tokens['modelPath']
-                                                      . '/create.blade.php';
+            . $this->tokens['modelPath']
+            . '/create.blade.php';
 
         $this->fileWritePaths['edit'] = base_path() . '/resources/views/'
-                                                    . $this->tokens['modelPath']
-                                                    . '/edit.blade.php';
+            . $this->tokens['modelPath']
+            . '/edit.blade.php';
 
         $this->fileWritePaths['show'] = base_path() . '/resources/views/'
-                                                    . $this->tokens['modelPath']
-                                                    . '/show.blade.php';
+            . $this->tokens['modelPath']
+            . '/show.blade.php';
 
         $this->fileWritePaths['component'] = base_path() . '/resources/assets/js/components/'
-                                                          . $this->tokens['gridComponentName']
-                                                          . '.vue';
+            . $this->tokens['gridComponentName']
+            . '.vue';
 
         $this->fileWritePaths['components'] = base_path() . '/resources/assets/js/components.js';
 
@@ -129,6 +129,9 @@ class ViewBuilder
 
         $this->initialValues['slug'] = strtolower($input['Slug']);
 
+        $this->initialValues['parent'] =  $input['ParentName'];
+
+        $this->initialValues['child'] = $input['ChildName'];
     }
 
 }

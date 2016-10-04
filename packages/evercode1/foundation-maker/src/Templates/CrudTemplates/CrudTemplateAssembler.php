@@ -2,7 +2,7 @@
 
 namespace Evercode1\FoundationMaker\Templates\CrudTemplates;
 
-use Evercode1\FoundationMaker\Builders\ContentFormatters\ContentTraits\ReplacesTokens;
+use Evercode1\FoundationMaker\Builders\ContentRouters\ContentTraits\ReplacesTokens;
 
 class CrudTemplateAssembler
 {

@@ -2,7 +2,7 @@
 
 namespace Evercode1\FoundationMaker\Builders\Writers;
 
-use Evercode1\FoundationMaker\Builders\ContentFormatters\MasterPageContentRouter;
+use Evercode1\FoundationMaker\Builders\ContentRouters\MasterPageContentRouter;
 
 class MasterPageWriter
 {

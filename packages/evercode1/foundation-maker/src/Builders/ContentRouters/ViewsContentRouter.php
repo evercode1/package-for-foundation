@@ -1,11 +1,13 @@
 <?php
 
-namespace Evercode1\FoundationMaker\Builders\ContentFormatters;
+namespace Evercode1\FoundationMaker\Builders\ContentRouters;
 
+use Evercode1\FoundationMaker\Builders\ContentRouters\ContentTraits\HasParentAndChildAndSlug;
 use Evercode1\FoundationMaker\Templates\ViewTemplates\ViewTemplateAssembler;
 
 class ViewsContentRouter
 {
+    use HasParentAndChildAndSlug;
 
 
     public function getContentFromTemplate($fileName, $tokens)
@@ -39,15 +41,18 @@ class ViewsContentRouter
 
             case 'component' :
 
+                if ( $this->hasSlug($tokens)){
+
+                    return $this->routeTemplate($tokens, 'component-slug');
+
+                    break;
+
+                }
+
                 return $this->routeTemplate($tokens, 'component');
 
                 break;
 
-            case 'component-slug' :
-
-                return $this->routeTemplate($tokens, 'component-slug');
-
-                break;
 
             case 'components' :
 

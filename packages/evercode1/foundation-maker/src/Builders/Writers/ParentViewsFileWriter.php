@@ -5,7 +5,7 @@ namespace Evercode1\FoundationMaker\Builders\Writers;
 use Evercode1\FoundationMaker\Builders\ContentRouters\ViewsContentRouter;
 
 
-class ViewsFileWriter
+class ParentViewsFileWriter
 {
 
     public $fileWritePaths;
