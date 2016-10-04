@@ -84,11 +84,11 @@ class CrudBuilder
     {
         $this->initialValues['model'] = $input['ModelName'];
 
-        $this->initialValues['slug'] = $input['Slug'];
+        $this->initialValues['slug'] = strtolower($input['Slug']);
 
-        $this->initialValues['parent'] = isset($input['parent']) ? $input['Parent'] : false;
+        $this->initialValues['parent'] = isset($input['Parent']) ? $input['Parent'] : false;
 
-        $this->initialValues['child'] = isset($input['child']) ? $input['Child'] : false;
+        $this->initialValues['child'] = isset($input['Child']) ? $input['Child'] : false;
     }
 
 

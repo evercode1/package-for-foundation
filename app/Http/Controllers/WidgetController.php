@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
 use App\Widget;
 use Illuminate\Support\Facades\Redirect;
 
@@ -50,8 +51,10 @@ class WidgetController extends Controller
 
         ]);
 
-        $widget = Widget::create(['name' => $request->name]);
+        $slug = str_slug($request->name, "-");
 
+        $widget = Widget::create(['name' => $request->name,
+                                                                  'slug' => $slug,]);
         $widget->save();
 
         return Redirect::route('widget.index');
@@ -65,12 +68,17 @@ class WidgetController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function show($id)
+    public function show($id, $slug='')
     {
         $widget = Widget::findOrFail($id);
 
-        return view('widget.show', compact('widget'));
+        if ($widget->slug !== $slug) {
 
+            return Redirect::route('widget.show', ['id' => $widget->id,
+                                                   'slug' => $widget->slug], 301);
+        }
+
+        return view('widget.show', compact('widget'));
     }
 
     /**
@@ -91,7 +99,7 @@ class WidgetController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request  \$request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -106,10 +114,12 @@ class WidgetController extends Controller
 
         $widget = Widget::findOrFail($id);
 
-        $widget->update(['name' => $request->name]);
+        $slug = str_slug($request->name, "-");
 
+        $widget->update(['name' => $request->name,
+                                       'slug' => $slug,]);
 
-        return Redirect::route('widget.show', ['widget' => $widget]);
+        return Redirect::route('widget.show', ['widget' => $widget, 'slug' => $slug]);
 
     }
 

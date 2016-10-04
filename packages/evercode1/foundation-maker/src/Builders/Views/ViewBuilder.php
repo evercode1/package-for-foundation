@@ -127,11 +127,11 @@ class ViewBuilder
 
         $this->initialValues['masterPageName'] = $input['MasterPage'];
 
-        $this->initialValues['slug'] = $input['Slug'];
+        $this->initialValues['slug'] = strtolower($input['Slug']);
 
-        $this->initialValues['parent'] = isset($input['parent']) ? $input['parent'] : false;
+        $this->initialValues['parent'] = isset($input['parent']) ? $input['Parent'] : false;
 
-        $this->initialValues['child'] = isset($input['child']) ? $input['child'] : false;
+        $this->initialValues['child'] = isset($input['child']) ? $input['Child'] : false;
     }
 
 }

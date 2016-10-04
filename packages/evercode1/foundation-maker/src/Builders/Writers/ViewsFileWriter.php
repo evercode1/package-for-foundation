@@ -89,6 +89,22 @@ class ViewsFileWriter
 
                 case 'component':
 
+                    if ($this->tokens['slug'] == 'slug'){
+
+                        $txt = $content->getContentFromTemplate('component-slug', $this->tokens);
+
+
+                        $handle = fopen($filePath, "w");
+
+                        fwrite($handle, $txt);
+
+                        fclose($handle);
+
+
+                        break;
+
+                    }
+
                     $txt = $content->getContentFromTemplate('component', $this->tokens);
 
 

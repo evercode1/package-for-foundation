@@ -9,15 +9,15 @@ class CrudFileWriter
 
     public $fileWritePaths;
     public $fileAppendPaths;
-    public $crudTokens = [];
+    public $tokens = [];
     public $content;
 
-    public function __construct($fileWritePaths, $fileAppendPaths, Array $crudTokens)
+    public function __construct($fileWritePaths, $fileAppendPaths, Array $tokens)
     {
 
         $this->fileWritePaths = $fileWritePaths;
         $this->fileAppendPaths = $fileAppendPaths;
-        $this->crudTokens = $crudTokens;
+        $this->tokens = $tokens;
         $this->content = new CrudContentRouter();
 
 
@@ -45,7 +45,7 @@ class CrudFileWriter
 
                         $fileExists = true;
 
-                        $txt = $content->getContentFromTemplate('apiController', $this->crudTokens, $fileExists);
+                        $txt = $content->getContentFromTemplate('apiController', $this->tokens, $fileExists);
 
                         $contents = file_get_contents($this->fileWritePaths['apiController']);
 
@@ -62,7 +62,7 @@ class CrudFileWriter
                         break;
                     }
 
-                    $txt = $content->getContentFromTemplate('apiController', $this->crudTokens);
+                    $txt = $content->getContentFromTemplate('apiController', $this->tokens);
 
                     $handle = fopen($filePath, "w");
 
@@ -104,7 +104,7 @@ class CrudFileWriter
                     }
 
 
-                    $txt = $content->getContentFromTemplate('dataQuery', $this->crudTokens);
+                    $txt = $content->getContentFromTemplate('dataQuery', $this->tokens);
 
                     $handle = fopen($filePath, "w");
 
@@ -122,7 +122,19 @@ class CrudFileWriter
                     }
 
 
-                    $txt = $content->getContentFromTemplate('gridQuery', $this->crudTokens);
+                    $txt = $content->getContentFromTemplate('gridQuery', $this->tokens);
+
+                    $handle = fopen($filePath, "w");
+
+                    fwrite($handle, $txt);
+
+                    fclose($handle);
+
+                    break;
+
+                case 'modelQuery':
+
+                    $txt = $content->getContentFromTemplate('modelQuery', $this->tokens);
 
                     $handle = fopen($filePath, "w");
 
@@ -134,7 +146,7 @@ class CrudFileWriter
 
                 case 'test':
 
-                    $txt = $content->getContentFromTemplate($fileName, $this->crudTokens);
+                    $txt = $content->getContentFromTemplate($fileName, $this->tokens);
 
                     $handle = fopen($filePath, "w");
 
@@ -149,7 +161,7 @@ class CrudFileWriter
 
                     if ( ! is_array($fileName)) {
 
-                        $txt = $content->getContentFromTemplate($fileName, $this->crudTokens);
+                        $txt = $content->getContentFromTemplate($fileName, $this->tokens);
 
                         $handle = fopen($filePath, "w");
 
@@ -172,7 +184,7 @@ class CrudFileWriter
 
             if ( ! is_array($fileName)) {
 
-                $txt = $content->getContentFromTemplate($fileName, $this->crudTokens);
+                $txt = $content->getContentFromTemplate($fileName, $this->tokens);
 
                 $handle = fopen($filePath, "a");
 

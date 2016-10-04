@@ -27,13 +27,23 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 
 
 
+
+
+
+
+
+
 // Begin Widget Factory
 
 $factory->define(App\Widget::class, function (Faker\Generator $faker) {
 
+        $uniqueWord = $faker->unique()->word;
+        $slug = str_slug($uniqueWord, "-");
+
     return [
 
-        'name' => $faker->unique()->word,
+        'name' => $uniqueWord,
+        'slug' => $slug,
 
     ];
 

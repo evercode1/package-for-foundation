@@ -31,7 +31,7 @@
                                 {{row.Id}}
                             </td>
                             <td>
-                                <a href="/:::modelPath:::/{{row.Id}}-{{row.slug}}">{{row.Name}}</a>
+                                <a href="/:::modelPath:::/{{row.Id}}">{{row.Name}}</a>
                             </td>
                             <td>
                                 {{row.Created }}

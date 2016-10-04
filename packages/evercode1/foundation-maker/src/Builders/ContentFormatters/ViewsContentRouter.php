@@ -15,37 +15,43 @@ class ViewsContentRouter
 
             case 'index' :
 
-                return $this->buildTemplate($tokens, 'index');
+                return $this->routeTemplate($tokens, 'index');
 
                 break;
 
             case 'create' :
 
-                return $this->buildTemplate($tokens, 'create');
+                return $this->routeTemplate($tokens, 'create');
 
                 break;
 
             case 'edit' :
 
-                return $this->buildTemplate($tokens, 'edit');
+                return $this->routeTemplate($tokens, 'edit');
 
                 break;
 
             case 'show' :
 
-                return $this->buildTemplate($tokens, 'show');
+                return $this->routeTemplate($tokens, 'show');
 
                 break;
 
             case 'component' :
 
-                return $this->buildTemplate($tokens, 'component');
+                return $this->routeTemplate($tokens, 'component');
+
+                break;
+
+            case 'component-slug' :
+
+                return $this->routeTemplate($tokens, 'component-slug');
 
                 break;
 
             case 'components' :
 
-                return $this->buildTemplate($tokens, 'components');
+                return $this->routeTemplate($tokens, 'components');
 
                 break;
 
@@ -60,7 +66,7 @@ class ViewsContentRouter
 
     }
 
-    private function buildTemplate($tokens, $templateName)
+    private function routeTemplate($tokens, $templateName)
     {
 
 

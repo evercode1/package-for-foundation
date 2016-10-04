@@ -21,13 +21,13 @@ class CrudContentRouter
                 if ($fileExists){
 
 
-                    return $this->buildTemplate($tokens, 'appendApiControllerTemplate');
+                    return $this->routeTemplate($tokens, 'appendApiControllerTemplate');
                     break;
 
                 } else {
 
 
-                    return $this->buildTemplate($tokens, 'apiControllerTemplate');
+                    return $this->routeTemplate($tokens, 'apiControllerTemplate');
                     break;
 
                 }
@@ -38,11 +38,11 @@ class CrudContentRouter
 
                     if ($this->hasSlug($tokens)){
 
-                        return $this->buildTemplate($tokens, 'childControllerSlugTemplate');
+                        return $this->routeTemplate($tokens, 'childControllerSlugTemplate');
                         break;
                     }
 
-                    return $this->buildTemplate($tokens, 'childControllerTemplate');
+                    return $this->routeTemplate($tokens, 'childControllerTemplate');
                     break;
 
 
@@ -50,12 +50,12 @@ class CrudContentRouter
 
                 if ($this->hasSlug($tokens)){
 
-                    return $this->buildTemplate($tokens, 'controllerSlugTemplate');
+                    return $this->routeTemplate($tokens, 'controllerSlugTemplate');
                     break;
 
                 }
 
-                return $this->buildTemplate($tokens, 'controllerTemplate');
+                return $this->routeTemplate($tokens, 'controllerTemplate');
                 break;
 
             case 'dataQuery' :
@@ -63,7 +63,7 @@ class CrudContentRouter
                 if ( ! $fileExists) {
 
 
-                    return $this->buildTemplate($tokens, 'dataQueryTemplate');
+                    return $this->routeTemplate($tokens, 'dataQueryTemplate');
                     break;
 
                 }
@@ -79,22 +79,22 @@ class CrudContentRouter
 
                     if ($this->hasSlug($tokens)){
 
-                        return $this->buildTemplate($tokens, 'childFactorySlugTemplate');
+                        return $this->routeTemplate($tokens, 'childFactorySlugTemplate');
                         break;
                     }
 
-                    return $this->buildTemplate($tokens, 'childFactoryTemplate');
+                    return $this->routeTemplate($tokens, 'childFactoryTemplate');
                     break;
                 }
 
 
                 if ($this->hasSlug($tokens)){
 
-                    return $this->buildTemplate($tokens, 'factorySlugTemplate');
+                    return $this->routeTemplate($tokens, 'factorySlugTemplate');
                     break;
                 }
 
-                return $this->buildTemplate($tokens, 'factoryTemplate');
+                return $this->routeTemplate($tokens, 'factoryTemplate');
                 break;
 
             case 'gridQuery' :
@@ -102,7 +102,7 @@ class CrudContentRouter
                 if ( ! $fileExists){
 
 
-                    return $this->buildTemplate($tokens, 'gridQueryTemplate');
+                    return $this->routeTemplate($tokens, 'gridQueryTemplate');
                     break;
 
                 } else {
@@ -118,11 +118,11 @@ class CrudContentRouter
 
                     if ($this->hasSlug($tokens)){
 
-                        return $this->buildTemplate($tokens, 'childMigrationSlugTemplate');
+                        return $this->routeTemplate($tokens, 'childMigrationSlugTemplate');
                         break;
                     }
 
-                    return $this->buildTemplate($tokens, 'childMigrationTemplate');
+                    return $this->routeTemplate($tokens, 'childMigrationTemplate');
                     break;
 
 
@@ -130,12 +130,12 @@ class CrudContentRouter
 
                 if ($this->hasSlug($tokens)){
 
-                    return $this->buildTemplate($tokens, 'migrationSlugTemplate');
+                    return $this->routeTemplate($tokens, 'migrationSlugTemplate');
                     break;
 
                 }
 
-                return $this->buildTemplate($tokens, 'migrationTemplate');
+                return $this->routeTemplate($tokens, 'migrationTemplate');
                 break;
 
             case 'model' :
@@ -144,11 +144,11 @@ class CrudContentRouter
 
                     if ($this->hasSlug($tokens)){
 
-                        return $this->buildTemplate($tokens, 'parentModelSlugTemplate');
+                        return $this->routeTemplate($tokens, 'parentModelSlugTemplate');
                         break;
                     }
 
-                    return $this->buildTemplate($tokens, 'parentModelTemplate');
+                    return $this->routeTemplate($tokens, 'parentModelTemplate');
                     break;
 
                 } else {
@@ -157,13 +157,13 @@ class CrudContentRouter
 
                         if ($this->hasSlug($tokens)){
 
-                            return $this->buildTemplate($tokens, 'childModelSlugTemplate');
+                            return $this->routeTemplate($tokens, 'childModelSlugTemplate');
                             break;
 
 
                         }
 
-                        return $this->buildTemplate($tokens, 'childModelTemplate');
+                        return $this->routeTemplate($tokens, 'childModelTemplate');
                         break;
                     }
 
@@ -171,12 +171,12 @@ class CrudContentRouter
 
                 if ($this->hasSlug($tokens)){
 
-                    return $this->buildTemplate($tokens, 'modelSlugTemplate');
+                    return $this->routeTemplate($tokens, 'modelSlugTemplate');
                     break;
 
                 }
 
-                return $this->buildTemplate($tokens, 'modelTemplate');
+                return $this->routeTemplate($tokens, 'modelTemplate');
                 break;
 
             case 'modelQuery':
@@ -186,13 +186,13 @@ class CrudContentRouter
 
                     if ($this->hasSlug($tokens)){
 
-                        return $this->buildTemplate($tokens, 'modelQueryChildSlugTemplate');
+                        return $this->routeTemplate($tokens, 'modelQueryChildSlugTemplate');
                         break;
 
 
                     }
 
-                        return $this->buildTemplate($tokens, 'modelQueryChildTemplate');
+                        return $this->routeTemplate($tokens, 'modelQueryChildTemplate');
                         break;
 
 
@@ -200,12 +200,12 @@ class CrudContentRouter
 
                 if ($this->hasSlug($tokens)){
 
-                    return $this->buildTemplate($tokens, 'modelQuerySlugTemplate');
+                    return $this->routeTemplate($tokens, 'modelQuerySlugTemplate');
                     break;
 
                 }
 
-                    return $this->buildTemplate($tokens, 'modelQueryTemplate');
+                    return $this->routeTemplate($tokens, 'modelQueryTemplate');
                     break;
 
 
@@ -213,11 +213,11 @@ class CrudContentRouter
 
                 if ($this->hasSlug($tokens)){
 
-                    return $this->buildTemplate($tokens, 'routeSlugTemplate');
+                    return $this->routeTemplate($tokens, 'routeSlugTemplate');
                     break;
                 }
 
-                return $this->buildTemplate($tokens, 'routeTemplate');
+                return $this->routeTemplate($tokens, 'routeTemplate');
                 break;
 
 
@@ -226,14 +226,14 @@ class CrudContentRouter
                 if ($this->hasChild($tokens)  && $this->isChild($tokens)){
 
 
-                    return $this->buildTemplate($tokens, 'childTestTemplate');
+                    return $this->routeTemplate($tokens, 'childTestTemplate');
                     break;
 
 
                 }
 
 
-                return $this->buildTemplate($tokens, 'testTemplate');
+                return $this->routeTemplate($tokens, 'testTemplate');
                 break;
 
 
@@ -247,7 +247,7 @@ class CrudContentRouter
 
     }
 
-    private function buildTemplate($tokens, $templateName)
+    private function routeTemplate($tokens, $templateName)
     {
 
 
