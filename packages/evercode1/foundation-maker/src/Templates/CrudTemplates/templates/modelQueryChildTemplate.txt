@@ -11,12 +11,11 @@ class :::model:::Query implements DataQuery
     {
 
         $rows = DB::table(':::tableName:::')
-                ->select('id as Id',
-                         'name as Name',
-                         ':::parentFieldName::: as :::parent:::',
-                         DB::raw('DATE_FORMAT(created_at,
+                ->select(':::tableName:::.id as Id',
+                         ':::tableName:::.name as Name',
+                         ':::parentsTableName:::.:::parentFieldName::: as :::parent:::',
+                         DB::raw('DATE_FORMAT(:::tableName:::.created_at,
                                  "%m-%d-%Y") as Created'))
-                ->where('name', 'like', '%' . $keyword . '%')
                 ->leftJoin(':::parentsTableName:::', ':::parent_id:::', '=', ':::parentsTableName:::.id')
                 ->orderBy($column, $direction)
                 ->paginate(10);
@@ -29,10 +28,10 @@ class :::model:::Query implements DataQuery
     {
 
         $rows = DB::table(':::tableName:::')
-                ->select('id as Id',
-                         'name as Name',
-                         ':::parentFieldName::: as :::parent:::',
-                         DB::raw('DATE_FORMAT(created_at,
+                ->select(':::tableName:::.id as Id',
+                         ':::tableName:::.name as Name',
+                         ':::parentsTableName:::.:::parentFieldName::: as :::parent:::',
+                         DB::raw('DATE_FORMAT(:::tableName:::.created_at,
                                  "%m-%d-%Y") as Created'))
                 ->leftJoin(':::parentsTableName:::', ':::parent_id:::', '=', ':::parentsTableName:::.id')
                 ->where(':::field_name:::', 'like', '%' . $keyword . '%')

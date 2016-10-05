@@ -3,9 +3,9 @@
 namespace Evercode1\FoundationMaker\Builders\Crud;
 
 use Evercode1\FoundationMaker\Tokens\Tokens;
-use Evercode1\FoundationMaker\Builders\Writers\ParentCrudFileWriter;
+use Evercode1\FoundationMaker\Builders\Writers\ChildCrudFileWriter;
 
-class ParentCrudBuilder
+class ChildCrudBuilder
 {
 
     public $initialValues = [];
@@ -31,9 +31,9 @@ class ParentCrudBuilder
     private function writeCrudFiles()
     {
 
-        $writer = new ParentCrudFileWriter($this->fileWritePaths,
-                                           $this->fileAppendPaths,
-                                           $this->tokens);
+        $writer = new ChildCrudFileWriter($this->fileWritePaths,
+                                          $this->fileAppendPaths,
+                                          $this->tokens);
 
         $writer->writeAllCrudFiles();
 
@@ -82,7 +82,7 @@ class ParentCrudBuilder
 
     private function setInput($input)
     {
-        $this->initialValues['model'] = $input['ParentName'];
+        $this->initialValues['model'] = $input['ChildName'];
 
         $this->initialValues['slug'] = strtolower($input['Slug']);
 

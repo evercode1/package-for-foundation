@@ -2,10 +2,10 @@
 
 namespace Evercode1\FoundationMaker\Builders\Writers;
 
-use Evercode1\FoundationMaker\Builders\ContentRouters\ParentViewsContentRouter;
+use Evercode1\FoundationMaker\Builders\ContentRouters\ChildViewsContentRouter;
 
 
-class ParentViewsFileWriter
+class ChildViewsFileWriter
 {
 
     public $fileWritePaths;
@@ -17,7 +17,7 @@ class ParentViewsFileWriter
 
         $this->fileWritePaths = $fileWritePaths;
         $this->tokens = $tokens;
-        $this->content = new ParentViewsContentRouter();
+        $this->content = new ChildViewsContentRouter();
 
 
     }
@@ -29,7 +29,7 @@ class ParentViewsFileWriter
 
     }
 
-    private function writeEachFile(array $fileWritePaths, ParentViewsContentRouter $content)
+    private function writeEachFile(array $fileWritePaths, ChildViewsContentRouter $content)
     {
 
         foreach ($fileWritePaths as $fileName => $filePath) {

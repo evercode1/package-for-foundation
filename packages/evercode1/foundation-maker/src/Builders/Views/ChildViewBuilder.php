@@ -2,10 +2,10 @@
 
 namespace Evercode1\FoundationMaker\Builders\Views;
 
-use Evercode1\FoundationMaker\Builders\Writers\ParentViewsFileWriter;
+use Evercode1\FoundationMaker\Builders\Writers\ChildViewsFileWriter;
 use Evercode1\FoundationMaker\Tokens\Tokens;
 
-class ParentViewBuilder
+class ChildViewBuilder
 {
 
     public $initialValues = [];
@@ -60,7 +60,7 @@ class ParentViewBuilder
     private function writeViewFiles()
     {
 
-        $writer = new ParentViewsFileWriter($this->fileWritePaths, $this->tokens);
+        $writer = new ChildViewsFileWriter($this->fileWritePaths, $this->tokens);
 
         $writer->writeAllViewFiles();
 
@@ -123,7 +123,7 @@ class ParentViewBuilder
 
     private function setInput($input)
     {
-        $this->initialValues['model'] = $input['ParentName'];
+        $this->initialValues['model'] = $input['ChildName'];
 
         $this->initialValues['masterPageName'] = $input['MasterPage'];
 

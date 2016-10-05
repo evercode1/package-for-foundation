@@ -17,25 +17,25 @@ class ParentViewsContentRouter
 
             case 'index' :
 
-                return $this->routeTemplate($tokens, 'index');
+                return $this->routeTemplate($tokens, 'indexTemplate');
 
                 break;
 
             case 'create' :
 
-                return $this->routeTemplate($tokens, 'create');
+                return $this->routeTemplate($tokens, 'createTemplate');
 
                 break;
 
             case 'edit' :
 
-                return $this->routeTemplate($tokens, 'edit');
+                return $this->routeTemplate($tokens, 'editTemplate');
 
                 break;
 
             case 'show' :
 
-                return $this->routeTemplate($tokens, 'show');
+                return $this->routeTemplate($tokens, 'showTemplate');
 
                 break;
 
@@ -43,20 +43,20 @@ class ParentViewsContentRouter
 
                 if ( $this->hasSlug($tokens)){
 
-                    return $this->routeTemplate($tokens, 'component-slug');
+                    return $this->routeTemplate($tokens, 'componentSlugTemplate');
 
                     break;
 
                 }
 
-                return $this->routeTemplate($tokens, 'component');
+                return $this->routeTemplate($tokens, 'componentTemplate');
 
                 break;
 
 
             case 'components' :
 
-                return $this->routeTemplate($tokens, 'components');
+                return $this->routeTemplate($tokens, 'componentsTemplate');
 
                 break;
 

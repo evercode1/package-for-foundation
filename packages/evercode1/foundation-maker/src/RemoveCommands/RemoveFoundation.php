@@ -80,7 +80,7 @@ class RemoveFoundation extends Command
 
         if ( $this->removeViewFolder($path) && $this->deleteFiles() ) {
 
-            $this->sendSuccessMessage();
+            $this->sendViewsSuccessMessage();
 
             return;
 
@@ -95,6 +95,13 @@ class RemoveFoundation extends Command
     {
 
         $this->info('Crud Files successfully removed');
+
+    }
+
+    private function sendViewsSuccessMessage()
+    {
+
+        $this->info('View Files successfully removed');
 
     }
 

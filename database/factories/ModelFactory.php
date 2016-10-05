@@ -71,3 +71,40 @@ $factory->define(App\Boom::class, function (Faker\Generator $faker) {
 });
 
 // End Boom Factory
+
+
+\n
+
+
+
+
+
+
+
+
+// Begin Category Factory
+
+$factory->define(App\Category::class, function (Faker\Generator $faker) {
+
+    return [
+
+        'name' => $faker->unique()->word,
+
+    ];
+
+});
+
+// End Category Factory
+// Begin Subcategory Factory
+
+$factory->define(App\Subcategory::class, function (Faker\Generator $faker) {
+    return [
+
+        'name' => $faker->unique()->word,
+        'category_id' => $faker->numberBetween($min = 1, $max = 4),
+
+    ];
+
+});
+
+// End Subcategory Factory

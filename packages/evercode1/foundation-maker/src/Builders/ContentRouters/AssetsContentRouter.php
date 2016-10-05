@@ -15,37 +15,37 @@ class AssetsContentRouter
 
             case 'appjs' :
 
-                return $this->routeTemplate('appjs');
+                return $this->routeTemplate('appjsTemplate');
 
                 break;
 
             case 'appscss' :
 
-                return $this->routeTemplate('appscss');
+                return $this->routeTemplate('appscssTemplate');
 
                 break;
 
             case 'bootstrap' :
 
-                return $this->routeTemplate('bootstrap');
+                return $this->routeTemplate('bootstrapTemplate');
 
                 break;
 
             case 'components' :
 
-                return $this->routeTemplate('components');
+                return $this->routeTemplate('componentsTemplate');
 
                 break;
 
             case 'gulpfile' :
 
-                return $this->routeTemplate('gulpfile');
+                return $this->routeTemplate('gulpfileTemplate');
 
                 break;
 
             case 'main' :
 
-                return $this->routeTemplate('main');
+                return $this->routeTemplate('mainTemplate');
 
                 break;
 

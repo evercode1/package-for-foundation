@@ -72,6 +72,7 @@ trait RemovesFiles
         $this->extractFromFiles['Api Data Grid Method'] = base_path('app/Http/Controllers/ApiController.php');
     }
 
+
     private function setViewPaths(){
 
         $this->unlinkFiles['component'] = base_path('resources/assets/js/components/' . $this->modelName .'Grid.vue');

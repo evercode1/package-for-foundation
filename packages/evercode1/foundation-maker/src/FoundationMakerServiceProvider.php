@@ -13,11 +13,13 @@ class FoundationMakerServiceProvider extends ServiceProvider
         'Evercode1\FoundationMaker\Commands\MakeCrud',
         'Evercode1\FoundationMaker\Commands\MakeFoundation',
         'Evercode1\FoundationMaker\Commands\MakeMasterPage',
+        'Evercode1\FoundationMaker\Commands\MakeParentAndChild',
         'Evercode1\FoundationMaker\Commands\MakeTemplates',
         'Evercode1\FoundationMaker\Commands\MakeViews',
         'Evercode1\FoundationMaker\RemoveCommands\RemoveCrud',
         'Evercode1\FoundationMaker\RemoveCommands\RemoveFoundation',
         'Evercode1\FoundationMaker\RemoveCommands\RemoveMasterPage',
+        'Evercode1\FoundationMaker\RemoveCommands\RemoveParentAndChild',
         'Evercode1\FoundationMaker\RemoveCommands\RemoveTemplates',
         'Evercode1\FoundationMaker\RemoveCommands\RemoveViews'
 

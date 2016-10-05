@@ -15,37 +15,37 @@ class MasterPageContentRouter
 
             case $masterPageName :
 
-                return $this->routeTemplate($masterPageName, $appName, 'master');
+                return $this->routeTemplate($masterPageName, $appName, 'masterTemplate');
 
                 break;
 
             case 'css' :
 
-                return $this->routeTemplate($masterPageName, $appName, 'css');
+                return $this->routeTemplate($masterPageName, $appName, 'cssTemplate');
 
                 break;
 
             case 'nav' :
 
-                return $this->routeTemplate($masterPageName, $appName, 'nav');
+                return $this->routeTemplate($masterPageName, $appName, 'navTemplate');
 
                 break;
 
             case 'scripts' :
 
-                return $this->routeTemplate($masterPageName, $appName, 'scripts');
+                return $this->routeTemplate($masterPageName, $appName, 'scriptsTemplate');
 
                 break;
 
             case 'bottom' :
 
-                return $this->routeTemplate($masterPageName, $appName, 'bottom');
+                return $this->routeTemplate($masterPageName, $appName, 'bottomTemplate');
 
                 break;
 
             case 'meta' :
 
-                return $this->routeTemplate($masterPageName, $appName, 'meta');
+                return $this->routeTemplate($masterPageName, $appName, 'metaTemplate');
 
                 break;
 

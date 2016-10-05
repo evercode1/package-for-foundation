@@ -49,11 +49,7 @@ class MakeParentAndChild extends Command
         parent::__construct();
     }
 
-    /**
-     * Execute the console command.
-     *
-     * @return mixed
-     */
+
     public function handle(ParentCrudBuilder $parentCrud,
                            ParentViewBuilder $parentView,
                            ChildCrudBuilder $childCrud,
@@ -124,14 +120,14 @@ class MakeParentAndChild extends Command
     private function sendChildSuccessMessage()
     {
 
-        $this->info('Parent Crud Files successfully created');
+        $this->info('Child Crud Files successfully created');
 
     }
 
     private function sendChildViewsSuccessMessage()
     {
 
-        $this->info('Parent Views successfully created');
+        $this->info('Child Views successfully created');
 
     }
 

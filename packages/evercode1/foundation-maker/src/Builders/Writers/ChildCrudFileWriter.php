@@ -4,7 +4,7 @@ namespace Evercode1\FoundationMaker\Builders\Writers;
 
 use Evercode1\FoundationMaker\Builders\ContentRouters\ChildCrudContentRouter;
 
-class CrudFileWriter
+class ChildCrudFileWriter
 {
 
     public $fileWritePaths;

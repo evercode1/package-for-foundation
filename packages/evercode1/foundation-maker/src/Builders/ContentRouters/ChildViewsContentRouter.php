@@ -5,7 +5,7 @@ namespace Evercode1\FoundationMaker\Builders\ContentRouters;
 use Evercode1\FoundationMaker\Builders\ContentRouters\ContentTraits\HasParentAndChildAndSlug;
 use Evercode1\FoundationMaker\Templates\ViewTemplates\ViewTemplateAssembler;
 
-class ViewsContentRouter
+class ChildViewsContentRouter
 {
     use HasParentAndChildAndSlug;
 
@@ -23,19 +23,20 @@ class ViewsContentRouter
 
             case 'create' :
 
-                return $this->routeTemplate($tokens, 'createTemplate');
+                return $this->routeTemplate($tokens, 'childCreateTemplate');
 
                 break;
 
             case 'edit' :
 
-                return $this->routeTemplate($tokens, 'editTemplate');
+                return $this->routeTemplate($tokens, 'childEditTemplate');
 
                 break;
 
             case 'show' :
 
-                return $this->routeTemplate($tokens, 'showTemplate');
+
+                return $this->routeTemplate($tokens, 'childShowTemplate');
 
                 break;
 
@@ -43,13 +44,13 @@ class ViewsContentRouter
 
                 if ( $this->hasSlug($tokens)){
 
-                    return $this->routeTemplate($tokens, 'componentSlugTemplate');
+                    return $this->routeTemplate($tokens, 'childComponentSlugTemplate');
 
                     break;
 
                 }
 
-                return $this->routeTemplate($tokens, 'componentTemplate');
+                return $this->routeTemplate($tokens, 'childComponentTemplate');
 
                 break;
 

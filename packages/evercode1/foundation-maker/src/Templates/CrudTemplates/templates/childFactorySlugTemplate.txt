@@ -1,4 +1,4 @@
-\n
+
 // Begin :::upperCaseModelName::: Factory
 
 $factory->define(App\:::upperCaseModelName:::::class, function (Faker\Generator $faker) {

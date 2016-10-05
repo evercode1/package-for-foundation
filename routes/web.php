@@ -20,26 +20,6 @@ Auth::routes();
 Route::get('/home', 'HomeController@index');
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // Begin Widget Routes
 
 Route::any('api/widget-data', 'ApiController@widgetData');
@@ -66,3 +46,31 @@ Route::get('boom/{id}-{slug?}', ['as' => 'boom.show', 'uses' => 'BoomController@
 Route::resource('boom', 'BoomController', ['except' => ['show', 'create']]);
 
 // End Boom Routes
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Begin Category Routes
+
+Route::get('api/category-data', 'ApiController@categoryData');
+
+Route::resource('category', 'CategoryController');
+
+// End Category Routes
+// Begin Subcategory Routes
+
+Route::get('api/subcategory-data', 'ApiController@subcategoryData');
+
+Route::resource('subcategory', 'SubcategoryController');
+
+// End Subcategory Routes
