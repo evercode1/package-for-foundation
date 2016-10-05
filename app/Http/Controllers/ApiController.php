@@ -163,6 +163,14 @@ class ApiController extends Controller
 
 
 
+    
+
+
+
+    
+
+
+
     // Begin Boom Api Data Grid Method
 
     public function boomData(Request $request)

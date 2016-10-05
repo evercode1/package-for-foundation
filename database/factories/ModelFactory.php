@@ -80,13 +80,19 @@ $factory->define(App\Boom::class, function (Faker\Generator $faker) {
 
 
 
+
+
 // Begin Category Factory
 
 $factory->define(App\Category::class, function (Faker\Generator $faker) {
 
+        $uniqueWord = $faker->unique()->word;
+        $slug = str_slug($uniqueWord, "-");
+
     return [
 
-        'name' => $faker->unique()->word,
+        'name' => $uniqueWord,
+        'slug' => $slug,
 
     ];
 
@@ -96,10 +102,15 @@ $factory->define(App\Category::class, function (Faker\Generator $faker) {
 // Begin Subcategory Factory
 
 $factory->define(App\Subcategory::class, function (Faker\Generator $faker) {
+
+       $uniqueWord = $faker->unique()->word;
+       $slug = str_slug($uniqueWord, "-");
+
     return [
 
-        'name' => $faker->unique()->word,
+        'name' => $uniqueWord,
         'category_id' => $faker->numberBetween($min = 1, $max = 4),
+        'slug' => $slug,
 
     ];
 

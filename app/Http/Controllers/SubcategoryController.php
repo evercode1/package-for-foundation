@@ -31,7 +31,7 @@ class SubcategoryController extends Controller
     public function create()
     {
 
-       $categories = Category::orderBy('name', 'asc')->get();
+        $categories = Category::orderBy('name', 'asc')->get();
 
         return view('subcategory.create', compact('categories'));
 
@@ -50,12 +50,16 @@ class SubcategoryController extends Controller
        $count = Category::count();
 
        $this->validate($request, [
+
             'name' => 'required|unique:subcategories|string|max:30',
             'category_id' => "required|numeric|digits_between:1,$count"
 
         ]);
 
+        $slug = str_slug($request->name, "-");
+
         $subcategory = Subcategory::create(['name' => $request->name,
+                                                                  'slug' => $slug,
                                                                   'category_id'  => $request->category_id]);
         $subcategory->save();
 
@@ -70,13 +74,21 @@ class SubcategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function show($id)
+    public function show($id, $slug='')
     {
         $subcategory = Subcategory::findOrFail($id);
+
+        if ($subcategory->slug !== $slug) {
+
+            return Redirect::route('subcategory.show', ['id' => $subcategory->id,
+                                                   'slug' => $subcategory->slug], 301);
+
+        }
 
         $category = $subcategory->category->name;
 
         return view('subcategory.show', compact('subcategory', 'category'));
+
     }
 
     /**
@@ -103,7 +115,7 @@ class SubcategoryController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  \$id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
 
@@ -121,15 +133,16 @@ class SubcategoryController extends Controller
 
         $subcategory = Subcategory::findOrFail($id);
 
+        $slug = str_slug($request->name, "-");
+
         $subcategory->update(['name' => $request->name,
+                                       'slug' => $slug,
                                        'category_id'  => $request->category_id
                                        ]);
 
-        $category = $subcategory->category->name;
-
 
         return Redirect::route('subcategory.show', ['subcategory' => $subcategory,
-                                                        'category' => $category
+                                                        'slug' => $slug
                                                         ]);
 
     }
@@ -143,7 +156,6 @@ class SubcategoryController extends Controller
 
     public function destroy($id)
     {
-
         Subcategory::destroy($id);
 
         return Redirect::route('subcategory.index');

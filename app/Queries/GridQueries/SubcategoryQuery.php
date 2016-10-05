@@ -13,8 +13,10 @@ class SubcategoryQuery implements DataQuery
         $rows = DB::table('subcategories')
                 ->select('subcategories.id as Id',
                          'subcategories.name as Name',
+                         'subcategories.slug as Slug',
                          'categories.name as Category',
                          'categories.id as CategoryId',
+                         'categories.slug as CategorySlug',
                          DB::raw('DATE_FORMAT(subcategories.created_at,
                                  "%m-%d-%Y") as Created'))
                 ->leftJoin('categories', 'category_id', '=', 'categories.id')
@@ -31,8 +33,10 @@ class SubcategoryQuery implements DataQuery
         $rows = DB::table('subcategories')
                 ->select('subcategories.id as Id',
                          'subcategories.name as Name',
+                         'subcategories.slug as Slug',
                          'categories.name as Category',
                          'categories.id as CategoryId',
+                         'categories.slug as CategorySlug',
                          DB::raw('DATE_FORMAT(subcategories.created_at,
                                  "%m-%d-%Y") as Created'))
                 ->leftJoin('categories', 'category_id', '=', 'categories.id')

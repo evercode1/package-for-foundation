@@ -31,9 +31,9 @@
                                 {{row.Id}}
                             </td>
                             <td>
-                                <a href="/subcategory/{{row.Id}}">{{row.Name}}</a>
+                                <a href="/subcategory/{{row.Id}}-{{row.Slug}}">{{row.Name}}</a>
                             </td>
-                            <td><a href="/category/{{row.CategoryId}}">{{ row.Category }}</a></td>
+                            <td><a href="/category/{{row.CategoryId}}-{{row.CategorySlug}}">{{ row.Category }}</a></td>
                             <td>
                                 {{row.Created }}
                             </td>

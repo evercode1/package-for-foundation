@@ -78,17 +78,27 @@ Route::resource('boom', 'BoomController', ['except' => ['show', 'create']]);
 
 
 
+
+
 // Begin Category Routes
 
-Route::get('api/category-data', 'ApiController@categoryData');
+Route::any('api/category-data', 'ApiController@categoryData');
 
-Route::resource('category', 'CategoryController');
+Route::get('category/create', ['as' => 'category.create', 'uses' => 'CategoryController@create']);
+
+Route::get('category/{id}-{slug?}', ['as' => 'category.show', 'uses' => 'CategoryController@show']);
+
+Route::resource('category', 'CategoryController', ['except' => ['show', 'create']]);
 
 // End Category Routes
 // Begin Subcategory Routes
 
-Route::get('api/subcategory-data', 'ApiController@subcategoryData');
+Route::any('api/subcategory-data', 'ApiController@subcategoryData');
 
-Route::resource('subcategory', 'SubcategoryController');
+Route::get('subcategory/create', ['as' => 'subcategory.create', 'uses' => 'SubcategoryController@create']);
+
+Route::get('subcategory/{id}-{slug?}', ['as' => 'subcategory.show', 'uses' => 'SubcategoryController@show']);
+
+Route::resource('subcategory', 'SubcategoryController', ['except' => ['show', 'create']]);
 
 // End Subcategory Routes

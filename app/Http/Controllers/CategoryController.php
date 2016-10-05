@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
 use App\Category;
 use Illuminate\Support\Facades\Redirect;
 
@@ -50,8 +51,10 @@ class CategoryController extends Controller
 
         ]);
 
-        $category = Category::create(['name' => $request->name]);
+        $slug = str_slug($request->name, "-");
 
+        $category = Category::create(['name' => $request->name,
+                                                                  'slug' => $slug,]);
         $category->save();
 
         return Redirect::route('category.index');
@@ -65,12 +68,17 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function show($id)
+    public function show($id, $slug='')
     {
         $category = Category::findOrFail($id);
 
-        return view('category.show', compact('category'));
+        if ($category->slug !== $slug) {
 
+            return Redirect::route('category.show', ['id' => $category->id,
+                                                   'slug' => $category->slug], 301);
+        }
+
+        return view('category.show', compact('category'));
     }
 
     /**
@@ -91,7 +99,7 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request  \$request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -106,10 +114,12 @@ class CategoryController extends Controller
 
         $category = Category::findOrFail($id);
 
-        $category->update(['name' => $request->name]);
+        $slug = str_slug($request->name, "-");
 
+        $category->update(['name' => $request->name,
+                                       'slug' => $slug,]);
 
-        return Redirect::route('category.show', ['category' => $category]);
+        return Redirect::route('category.show', ['category' => $category, 'slug' => $slug]);
 
     }
 
