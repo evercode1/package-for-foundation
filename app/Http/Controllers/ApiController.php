@@ -9,6 +9,60 @@ use App\Queries\GridQueries\GridQuery;
 class ApiController extends Controller
 {
 
+    // Begin Boomlet Api Data Grid Method
+
+    public function boomletData(Request $request)
+    {
+
+        return GridQuery::sendData($request, 'BoomletQuery');
+
+    }
+
+    // End Boomlet Api Data Grid Method
+
+
+
+    // Begin Boom Api Data Grid Method
+
+    public function boomData(Request $request)
+    {
+
+        return GridQuery::sendData($request, 'BoomQuery');
+
+    }
+
+    // End Boom Api Data Grid Method
+
+
+
+    
+
+
+
+    
+
+
+
+    
+
+
+
+    
+
+
+
+    
+
+
+
+    
+
+
+
+    
+
+
+
     // Begin Subcategory Api Data Grid Method
 
     public function subcategoryData(Request $request)
@@ -35,152 +89,8 @@ class ApiController extends Controller
 
 
 
-    
-
-
 
     
-
-
-
-    
-
-
-
-    
-
-
-
-    
-
-
-
-    
-
-
-
-    
-
-
-
-    
-
-
-
-    
-
-
-
-    
-
-
-
-    
-
-
-
-    
-
-
-
-    
-
-
-
-    
-
-
-
-    
-
-
-
-    
-
-
-
-    
-
-
-
-    
-
-
-
-    
-
-
-
-    
-
-
-
-    
-
-
-
-    
-
-
-
-    
-
-
-
-    
-
-
-
-    
-
-
-
-    
-
-
-
-    
-
-
-
-    
-
-
-
-    
-
-
-
-    
-
-
-
-    
-
-
-
-    
-
-
-
-    
-
-
-
-    
-
-
-
-    // Begin Boom Api Data Grid Method
-
-    public function boomData(Request $request)
-    {
-
-        return GridQuery::sendData($request, 'BoomQuery');
-
-    }
-
-    // End Boom Api Data Grid Method
 
 
 

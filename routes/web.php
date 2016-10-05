@@ -35,17 +35,9 @@ Route::resource('widget', 'WidgetController', ['except' => ['show', 'create']]);
 
 
 
-// Begin Boom Routes
 
-Route::any('api/boom-data', 'ApiController@boomData');
 
-Route::get('boom/create', ['as' => 'boom.create', 'uses' => 'BoomController@create']);
 
-Route::get('boom/{id}-{slug?}', ['as' => 'boom.show', 'uses' => 'BoomController@show']);
-
-Route::resource('boom', 'BoomController', ['except' => ['show', 'create']]);
-
-// End Boom Routes
 
 
 
@@ -102,3 +94,28 @@ Route::get('subcategory/{id}-{slug?}', ['as' => 'subcategory.show', 'uses' => 'S
 Route::resource('subcategory', 'SubcategoryController', ['except' => ['show', 'create']]);
 
 // End Subcategory Routes
+
+
+
+
+
+
+
+// Begin Boom Routes
+
+Route::any('api/boom-data', 'ApiController@boomData');
+
+Route::get('boom/create', ['as' => 'boom.create', 'uses' => 'BoomController@create']);
+
+Route::get('boom/{id}-{slug?}', ['as' => 'boom.show', 'uses' => 'BoomController@show']);
+
+Route::resource('boom', 'BoomController', ['except' => ['show', 'create']]);
+
+// End Boom Routes
+// Begin Boomlet Routes
+
+Route::get('api/boomlet-data', 'ApiController@boomletData');
+
+Route::resource('boomlet', 'BoomletController');
+
+// End Boomlet Routes

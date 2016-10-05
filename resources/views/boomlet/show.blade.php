@@ -2,7 +2,7 @@
 
 @section('title')
 
-    <title>Boom</title>
+    <title>Boomlet</title>
 
 @endsection
 
@@ -10,11 +10,11 @@
 
         <ol class='breadcrumb'>
         <li><a href='/'>Home</a></li>
-        <li><a href='/boom'>Booms</a></li>
-        <li><a href='/boom/{{ $boom->id }}'>{{ $boom->name }}</a></li>
+        <li><a href='/boomlet'>Boomlets</a></li>
+        <li><a href='/boomlet/{{ $boomlet->id }}'>{{ $boomlet->name }}</a></li>
         </ol>
 
-        <h1>Boom Details</h1>
+        <h1>Boomlet Details</h1>
 
         <hr/>
 
@@ -26,6 +26,7 @@
 
                         <th>Id</th>
                         <th>Name</th>
+                        <th>Boom</th>
                         <th>Date Created</th>
                         <th>Edit</th>
                         <th>Delete</th>
@@ -34,12 +35,13 @@
 
 
                     <tr>
-                        <td>{{ $boom->id }} </td>
-                        <td> <a href="/boom/{{ $boom->id }}/edit">
-                                {{ $boom->name }}</a></td>
-                        <td>{{ $boom->created_at }}</td>
+                        <td>{{ $boomlet->id }} </td>
+                        <td> <a href="/boomlet/{{ $boomlet->id }}/edit">
+                                {{ $boomlet->name }}</a></td>
+                                <td>{{ $boom }}</td>
+                        <td>{{ $boomlet->created_at }}</td>
 
-                        <td> <a href="/boom/{{ $boom->id }}/edit">
+                        <td> <a href="/boomlet/{{ $boomlet->id }}/edit">
 
                                 <button type="button" class="btn btn-default">Edit</button></a></td>
 
@@ -48,25 +50,23 @@
                         <div class="form-group">
 
                         <form class="form" role="form" method="POST"
-                         action="{{ url('/boom/'. $boom->id) }}">
+                        action="{{ url('/boomlet/'. $boomlet->id) }}">
 
                         <input type="hidden" name="_method" value="delete">
 
                         {{ csrf_field() }}
 
-                        <input class="btn btn-danger" Onclick="return ConfirmDelete();"
-                         type="submit" value="Delete">
+                        <input class="btn btn-danger" Onclick="return ConfirmDelete();" type="submit" value="Delete">
 
                         </form>
 
-                        </div>
+                       </div>
 
-                        </td>
+                       </td>
 
                     </tr>
 
                 </table>
-
 
         </div>
 

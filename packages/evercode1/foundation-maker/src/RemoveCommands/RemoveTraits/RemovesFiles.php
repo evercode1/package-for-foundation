@@ -72,6 +72,12 @@ trait RemovesFiles
         $this->extractFromFiles['Api Data Grid Method'] = base_path('app/Http/Controllers/ApiController.php');
     }
 
+    private function setRelationshipPath()
+    {
+
+        $this->extractFromFiles['Relationship'] = base_path('app/'. $this->modelName . '.php');
+    }
+
 
     private function setViewPaths(){
 
@@ -138,9 +144,12 @@ trait RemovesFiles
 
             } else {
 
-                $start = '// Begin ' . $this->modelName . ' ' .  $type ;
+                $model = ($type == 'Relationship') ? $this->childName : $this->modelName;
 
-                $end = '// End ' . $this->modelName . ' ' . $type;
+
+                    $start = '// Begin ' . $model . ' ' .  $type ;
+
+                    $end = '// End ' . $model . ' ' . $type;
 
 
             }
@@ -168,6 +177,8 @@ trait RemovesFiles
         }
 
         $this->cleanUp();
+
+        return true;
 
 
     }

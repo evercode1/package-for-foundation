@@ -1,0 +1,10 @@
+    // Begin :::child::: Relationship
+
+    public function :::childRelation:::()
+    {
+
+       return $this->hasMany('App\:::child:::');
+
+    }
+
+    // End :::child::: Relationship

@@ -2,7 +2,7 @@
 
 namespace Evercode1\FoundationMaker\Builders\Writers;
 
-use Evercode1\FoundationMaker\Builders\ContentRouters\ChildCrudContentRouter;
+use Evercode1\FoundationMaker\Builders\ContentRouters\CrudContentRouter;
 
 class CrudFileWriter
 {
@@ -18,7 +18,7 @@ class CrudFileWriter
         $this->fileWritePaths = $fileWritePaths;
         $this->fileAppendPaths = $fileAppendPaths;
         $this->tokens = $tokens;
-        $this->content = new ChildCrudContentRouter();
+        $this->content = new CrudContentRouter();
 
 
     }
@@ -32,7 +32,7 @@ class CrudFileWriter
 
     }
 
-    private function writeEachFile(array $fileWritePaths, ChildCrudContentRouter $content)
+    private function writeEachFile(array $fileWritePaths, CrudContentRouter $content)
     {
 
         foreach ($fileWritePaths as $fileName => $filePath) {
@@ -177,7 +177,7 @@ class CrudFileWriter
         }
     }
 
-    private function appendEachFile(array $fileAppendPaths, ChildCrudContentRouter $content)
+    private function appendEachFile(array $fileAppendPaths, CrudContentRouter $content)
     {
 
         foreach ($fileAppendPaths as $fileName => $filePath) {
