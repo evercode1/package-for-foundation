@@ -33,7 +33,7 @@
                             <td>
                                 <a href="/:::modelPath:::/{{row.Id}}">{{row.Name}}</a>
                             </td>
-                            <td>{{ row.:::parent::: }}</td>
+                            <td><a href="/:::parentModelPath:::/{{row.:::parent:::Id}}">{{ row.:::parent::: }}</a></td>
                             <td>
                                 {{row.Created }}
                             </td>

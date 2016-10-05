@@ -8,11 +8,15 @@ class :::upperCaseModelName::: extends Model
 {
     protected $fillable = [':::field_name:::', 'slug'];
 
+    // Begin :::child::: Relationship
+
     public function :::childRelation:::()
     {
 
        return $this->hasMany('App\:::child:::');
 
     }
+
+    // End :::child::: Relationship
 
 }

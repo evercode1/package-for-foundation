@@ -60,6 +60,24 @@ Route::resource('boom', 'BoomController', ['except' => ['show', 'create']]);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Begin Category Routes
 
 Route::get('api/category-data', 'ApiController@categoryData');

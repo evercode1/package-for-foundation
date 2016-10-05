@@ -14,6 +14,7 @@ class SubcategoryQuery implements DataQuery
                 ->select('subcategories.id as Id',
                          'subcategories.name as Name',
                          'categories.name as Category',
+                         'categories.id as CategoryId',
                          DB::raw('DATE_FORMAT(subcategories.created_at,
                                  "%m-%d-%Y") as Created'))
                 ->leftJoin('categories', 'category_id', '=', 'categories.id')
@@ -31,10 +32,12 @@ class SubcategoryQuery implements DataQuery
                 ->select('subcategories.id as Id',
                          'subcategories.name as Name',
                          'categories.name as Category',
+                         'categories.id as CategoryId',
                          DB::raw('DATE_FORMAT(subcategories.created_at,
                                  "%m-%d-%Y") as Created'))
                 ->leftJoin('categories', 'category_id', '=', 'categories.id')
-                ->where('name', 'like', '%' . $keyword . '%')
+                ->where('subcategories.name', 'like', '%' . $keyword . '%')
+                ->orWhere('categories.name', 'like', '%' . $keyword . '%')
                 ->orderBy($column, $direction)
                 ->paginate(10);
 

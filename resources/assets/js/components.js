@@ -20,6 +20,24 @@ Vue.component('boom-grid', require('./components/BoomGrid.vue'));
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /** Begin Category Grid Component Call */
 
 Vue.component('category-grid', require('./components/CategoryGrid.vue'));

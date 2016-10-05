@@ -95,6 +95,8 @@ class Tokens
 
         $parentInstances = $this->formatParents($this->parent);
 
+        $parentModelPath = $this->formatModelPath($this->parent);
+
         $parentsTableName = $this->formatParentsTableName($this->parent);
 
         $slug = $this->slug;
@@ -144,6 +146,7 @@ class Tokens
                           'parent_id',
                           'parentInstance',
                           'parentInstances',
+                          'parentModelPath',
                           'parentsTableName',
                           'slug',
                           'tableName',

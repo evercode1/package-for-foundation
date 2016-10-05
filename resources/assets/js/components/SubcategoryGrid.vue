@@ -33,7 +33,7 @@
                             <td>
                                 <a href="/subcategory/{{row.Id}}">{{row.Name}}</a>
                             </td>
-                            <td>{{ row.Category }}</td>
+                            <td><a href="/category/{{row.CategoryId}}">{{ row.Category }}</a></td>
                             <td>
                                 {{row.Created }}
                             </td>

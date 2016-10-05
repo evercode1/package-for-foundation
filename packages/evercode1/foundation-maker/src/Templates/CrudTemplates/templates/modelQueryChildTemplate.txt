@@ -14,6 +14,7 @@ class :::model:::Query implements DataQuery
                 ->select(':::tableName:::.id as Id',
                          ':::tableName:::.name as Name',
                          ':::parentsTableName:::.:::parentFieldName::: as :::parent:::',
+                         ':::parentsTableName:::.id as :::parent:::Id',
                          DB::raw('DATE_FORMAT(:::tableName:::.created_at,
                                  "%m-%d-%Y") as Created'))
                 ->leftJoin(':::parentsTableName:::', ':::parent_id:::', '=', ':::parentsTableName:::.id')
@@ -31,10 +32,12 @@ class :::model:::Query implements DataQuery
                 ->select(':::tableName:::.id as Id',
                          ':::tableName:::.name as Name',
                          ':::parentsTableName:::.:::parentFieldName::: as :::parent:::',
+                         ':::parentsTableName:::.id as :::parent:::Id',
                          DB::raw('DATE_FORMAT(:::tableName:::.created_at,
                                  "%m-%d-%Y") as Created'))
                 ->leftJoin(':::parentsTableName:::', ':::parent_id:::', '=', ':::parentsTableName:::.id')
-                ->where(':::field_name:::', 'like', '%' . $keyword . '%')
+                ->where(':::tableName:::.:::field_name:::', 'like', '%' . $keyword . '%')
+                ->orWhere(':::parentsTableName:::.name', 'like', '%' . $keyword . '%')
                 ->orderBy($column, $direction)
                 ->paginate(10);
 

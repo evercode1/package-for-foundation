@@ -24,15 +24,6 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 
 
 
-
-
-
-
-
-
-
-
-
 // Begin Widget Factory
 
 $factory->define(App\Widget::class, function (Faker\Generator $faker) {
@@ -73,7 +64,14 @@ $factory->define(App\Boom::class, function (Faker\Generator $faker) {
 // End Boom Factory
 
 
-\n
+
+
+
+
+
+
+
+
 
 
 
