@@ -1,8 +1,8 @@
-@extends('layouts.master')
+@extends('layouts.:::masterPageName:::')
 
 @section('title')
 
-    <title>Create a Boomlet</title>
+    <title>Create a :::upperCaseModelName:::</title>
 
 @endsection
 
@@ -10,23 +10,23 @@
 
     <ol class='breadcrumb'>
         <li><a href='/'>Home</a></li>
-        <li><a href='/boomlet'>Boomlets</a></li>
+        <li><a href=':::modelRoute:::'>:::modelsUpperCase:::</a></li>
         <li class='active'>Create</li>
     </ol>
 
-    <h2>Create a New Boomlets</h2>
+    <h2>Create a New :::modelsUpperCase:::</h2>
 
     <hr/>
 
-    <form class="form" role="form" method="POST" action="{{ url('/boomlet') }}">
+    <form class="form" role="form" method="POST" action="{{ url(':::modelRoute:::') }}">
 
     {{ csrf_field() }}
 
-    <!-- name Form Input -->
+    <!-- :::field_name::: Form Input -->
 
         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
 
-            <label class="control-label">Boomlets Name</label>
+            <label class="control-label">:::modelsUpperCase::: Name</label>
 
             <input type="text" class="form-control" name="name" value="{{ old('name') }}">
 
@@ -42,27 +42,27 @@
 
         </div>
 
-        <div class="form-group{{ $errors->has('boom_id') ? ' has-error' : '' }}">
+        <div class="form-group{{ $errors->has(':::parent_id:::') ? ' has-error' : '' }}">
 
-           <label for="boom_id">Boom Name:</label>
+           <label for=":::parent_id:::">:::parent::: Name:</label>
 
-           <select class="form-control" name="boom_id">
+           <select class="form-control" name=":::parent_id:::">
 
            <option value="">Please Choose One</option>
 
-           @foreach($booms as $boom)
+           @foreach($:::parentInstances::: as $:::parentInstance:::)
 
-               <option value="{{ $boom->id }}">{{ $boom->name }}</option>
+               <option value="{{ $:::parentInstance:::->id }}">{{ $:::parentInstance:::->:::parentFieldName::: }}</option>
 
                @endforeach
 
                </select>
 
-           @if ($errors->has('boom_id'))
+           @if ($errors->has(':::parent_id:::'))
 
                <span class="help-block">
 
-               <strong>{{ $errors->first('boom_id') }}</strong>
+               <strong>{{ $errors->first(':::parent_id:::') }}</strong>
 
                </span>
 

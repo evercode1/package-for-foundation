@@ -1,8 +1,8 @@
-@extends('layouts.master')
+@extends('layouts.:::masterPageName:::')
 
 @section('title')
 
-    <title>Boomlet</title>
+    <title>:::upperCaseModelName:::</title>
 
 @endsection
 
@@ -10,11 +10,11 @@
 
         <ol class='breadcrumb'>
         <li><a href='/'>Home</a></li>
-        <li><a href='/boomlet'>Boomlets</a></li>
-        <li><a href='/boomlet/{{ $boomlet->id }}'>{{ $boomlet->name }}</a></li>
+        <li><a href=':::modelRoute:::'>:::modelsUpperCase:::</a></li>
+        <li><a href=':::modelRoute:::/{{ $:::modelId::: }}'>{{ $:::modelAttribute::: }}</a></li>
         </ol>
 
-        <h1>Boomlet Details</h1>
+        <h1>:::upperCaseModelName::: Details</h1>
 
         <hr/>
 
@@ -26,7 +26,7 @@
 
                         <th>Id</th>
                         <th>Name</th>
-                        <th>Boom</th>
+                        <th>:::parent:::</th>
                         <th>Date Created</th>
                         <th>Edit</th>
                         <th>Delete</th>
@@ -35,13 +35,13 @@
 
 
                     <tr>
-                        <td>{{ $boomlet->id }} </td>
-                        <td> <a href="/boomlet/{{ $boomlet->id }}/edit">
-                                {{ $boomlet->name }}</a></td>
-                                <td>{{ $boom }}</td>
-                        <td>{{ $boomlet->created_at }}</td>
+                        <td>{{ $:::modelId::: }} </td>
+                        <td> <a href=":::modelRoute:::/{{ $:::modelId::: }}/edit">
+                                {{ $:::modelAttribute::: }}</a></td>
+                                <td>{{ $:::parentInstance::: }}</td>
+                        <td>{{ $:::createdAt::: }}</td>
 
-                        <td> <a href="/boomlet/{{ $boomlet->id }}/edit">
+                        <td> <a href=":::modelRoute:::/{{ $:::modelId::: }}/edit">
 
                                 <button type="button" class="btn btn-default">Edit</button></a></td>
 
@@ -50,7 +50,7 @@
                         <div class="form-group">
 
                         <form class="form" role="form" method="POST"
-                        action="{{ url('/boomlet/'. $boomlet->id) }}">
+                        action="{{ url(':::modelRoute:::/'. $:::modelId:::) }}">
 
                         <input type="hidden" name="_method" value="delete">
 

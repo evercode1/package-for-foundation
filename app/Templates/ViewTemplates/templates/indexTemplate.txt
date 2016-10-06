@@ -1,8 +1,8 @@
-@extends('layouts.master')
+@extends('layouts.:::masterPageName:::')
 
 @section('title')
 
-    <title>Boomlets</title>
+    <title>:::modelsUpperCase:::</title>
 
     @endsection
 
@@ -10,16 +10,16 @@
 
     <ol class='breadcrumb'>
         <li><a href='/'>Home</a></li>
-        <li class='active'>Boomlets</li>
+        <li class='active'>:::modelsUpperCase:::</li>
     </ol>
 
-    <h2>Boomlets</h2>
+    <h2>:::newToken:::</h2>
 
     <hr/>
 
-    <boomlet-grid></boomlet-grid>
+    <:::gridName:::></:::gridName:::>
 
-    <div> <a href="boomlet/create">
+    <div> <a href=":::modelPath:::/create">
             <button type="button" class="btn btn-lg btn-primary">
                 Create New
             </button></a>

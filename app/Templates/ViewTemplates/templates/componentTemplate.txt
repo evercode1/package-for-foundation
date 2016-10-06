@@ -31,13 +31,12 @@
                                 {{row.Id}}
                             </td>
                             <td>
-                                <a href="/boomlet/{{row.Id}}">{{row.Name}}</a>
+                                <a href="/:::modelPath:::/{{row.Id}}">{{row.Name}}</a>
                             </td>
-                            <td><a href="/boom/{{row.BoomId}}">{{ row.Boom }}</a></td>
                             <td>
                                 {{row.Created }}
                             </td>
-                            <td ><a href="/boomlet/{{row.Id}}/edit">
+                            <td ><a href="/:::modelPath:::/{{row.Id}}/edit">
                                  <button type="button" class="btn btn-default">
                                     Edit
                                  </button>
@@ -98,7 +97,7 @@
             return {
 
                 query: '',
-                gridColumns: ['Id', 'Name', 'Boom','Created'],
+                gridColumns: ['Id', 'Name', 'Created'],
                 gridData: [],
                 total: null,
                 next_page_url: null,
@@ -138,15 +137,15 @@
             },
 
             loadData: function (){
-                $.getJSON('api/boomlet-data', function (data) {
+                $.getJSON(':::apiDataPath:::', function (data) {
                     this.gridData = data.data;
                     this.total = data.total;
                     this.last_page =  data.last_page;
                     this.next_page_url = data.next_page_url;
                     this.prev_page_url = data.prev_page_url;
                     this.current_page = data.current_page;
-                    this.first_page_url = 'api/boomlet-data?page=1';
-                    this.last_page_url = 'api/boomlet-data?page=' + this.last_page;
+                    this.first_page_url = ':::apiDataPath:::?page=1';
+                    this.last_page_url = ':::apiDataPath:::?page=' + this.last_page;
                     this.setPageNumbers();
                 }.bind(this));
             },
@@ -202,7 +201,7 @@
 
                     case this.query :
 
-                        getPage = 'api/boomlet-data?' +
+                        getPage = ':::apiDataPath:::?' +
                                   'keyword=' + this.query +
                                   '&column=' + this.sortKey +
                                   '&direction=' + this.sortOrder;
@@ -213,7 +212,7 @@
 
                         if( this.go_to_page != '' && this.pageInRange()){
 
-                            getPage = 'api/boomlet-data?' +
+                            getPage = ':::apiDataPath:::?' +
                                       'page=' + this.go_to_page +
                                       '&column=' + this.sortKey +
                                       '&direction=' + this.sortOrder +
@@ -230,7 +229,7 @@
 
                     default :
 
-                        getPage = 'api/boomlet-data?' +
+                        getPage = ':::apiDataPath:::?' +
                                   'page=' + request +
                                   '&column=' + this.sortKey +
                                   '&direction=' + this.sortOrder +
@@ -260,8 +259,8 @@
                             this.last_page =  data.last_page;
                             this.next_page_url = (data.next_page_url == null) ? null : data.next_page_url + '&keyword=' +this.query;
                             this.prev_page_url = (data.prev_page_url == null) ? null : data.prev_page_url + '&keyword=' +this.query;
-                            this.first_page_url = 'api/boomlet-data?page=1&keyword=' +this.query;
-                            this.last_page_url = 'api/boomlet-data?page=' + this.last_page + '&keyword=' +this.query;
+                            this.first_page_url = ':::apiDataPath:::?page=1&keyword=' +this.query;
+                            this.last_page_url = ':::apiDataPath:::?page=' + this.last_page + '&keyword=' +this.query;
                             this.current_page = data.current_page;
                             this.resetPageNumbers();
                         }.bind(this));

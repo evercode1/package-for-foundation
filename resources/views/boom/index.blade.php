@@ -13,7 +13,7 @@
         <li class='active'>Booms</li>
     </ol>
 
-    <h2>Booms</h2>
+    <h2>Something Special</h2>
 
     <hr/>
 

@@ -20,6 +20,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index');
 
 
+
 // Begin Widget Routes
 
 Route::any('api/widget-data', 'ApiController@widgetData');
@@ -31,47 +32,6 @@ Route::get('widget/{id}-{slug?}', ['as' => 'widget.show', 'uses' => 'WidgetContr
 Route::resource('widget', 'WidgetController', ['except' => ['show', 'create']]);
 
 // End Widget Routes
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // Begin Category Routes
 
 Route::any('api/category-data', 'ApiController@categoryData');
@@ -94,13 +54,17 @@ Route::get('subcategory/{id}-{slug?}', ['as' => 'subcategory.show', 'uses' => 'S
 Route::resource('subcategory', 'SubcategoryController', ['except' => ['show', 'create']]);
 
 // End Subcategory Routes
+// Begin :::upperCaseModelName::: Routes
 
+Route::any(':::gridApiRoute:::', 'ApiController@boomData');
 
+Route::get(':::modelPath:::/create', ['as' => ':::modelPath:::.create', 'uses' => ':::upperCaseModelName:::Controller@create']);
 
+Route::get(':::modelPath:::/{id}-{slug?}', ['as' => ':::modelPath:::.show', 'uses' => ':::upperCaseModelName:::Controller@show']);
 
+Route::resource(':::modelPath:::', ':::upperCaseModelName:::Controller', ['except' => ['show', 'create']]);
 
-
-
+// End :::upperCaseModelName::: Routes
 // Begin Boom Routes
 
 Route::any('api/boom-data', 'ApiController@boomData');
@@ -112,10 +76,3 @@ Route::get('boom/{id}-{slug?}', ['as' => 'boom.show', 'uses' => 'BoomController@
 Route::resource('boom', 'BoomController', ['except' => ['show', 'create']]);
 
 // End Boom Routes
-// Begin Boomlet Routes
-
-Route::get('api/boomlet-data', 'ApiController@boomletData');
-
-Route::resource('boomlet', 'BoomletController');
-
-// End Boomlet Routes

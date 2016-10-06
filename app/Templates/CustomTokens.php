@@ -11,11 +11,11 @@ class CustomTokens
     |--------------------------------------------------------------------------
     |
     | Use this class to create and inject your tokens into the templates.
-    | Be careful not to duplicate existing tokens with the same name.
+    | Tokens you define here will overwrite tokens with the same name.
     | You can create methods to format the token, see samples below.
     | Embed the $token in the template using syntax:  :::token:::
     | The token will be replaced by the value you define here.
-    | The $model and $modelPath are provided for convenience.
+    | The $model and $modelPath are provided for you.
     |
     */
 
@@ -43,11 +43,13 @@ class CustomTokens
         $getCreative = 'you can put anything you want here';
         $myToken = 'create custom formatting methods in the class, using ' . $this->model;
         $copyright = $this->copyright();
+        $newToken = 'Something Special';
 
         return $customTokens = compact('sampleToken',
                                        'getCreative',
                                        'myToken',
-                                       'copyright');
+                                       'copyright',
+                                        'newToken');
 
 
     }

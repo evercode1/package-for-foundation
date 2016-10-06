@@ -11,5 +11,5 @@
 
         @endif
 
-        MyApp All rights Reserved.</p>
+        :::appName::: All rights Reserved.</p>
 </div>

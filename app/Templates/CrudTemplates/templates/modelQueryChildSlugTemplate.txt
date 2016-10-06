@@ -1,0 +1,52 @@
+<?php
+
+namespace App\Queries\GridQueries;
+use DB;
+use App\Queries\GridQueries\Contracts\DataQuery;
+
+class :::model:::Query implements DataQuery
+{
+
+    public function data($column, $direction)
+    {
+
+        $rows = DB::table(':::tableName:::')
+                ->select(':::tableName:::.id as Id',
+                         ':::tableName:::.name as Name',
+                         ':::tableName:::.slug as Slug',
+                         ':::parentsTableName:::.:::parentFieldName::: as :::parent:::',
+                         ':::parentsTableName:::.id as :::parent:::Id',
+                         ':::parentsTableName:::.slug as :::parent:::Slug',
+                         DB::raw('DATE_FORMAT(:::tableName:::.created_at,
+                                 "%m-%d-%Y") as Created'))
+                ->leftJoin(':::parentsTableName:::', ':::parent_id:::', '=', ':::parentsTableName:::.id')
+                ->orderBy($column, $direction)
+                ->paginate(10);
+
+            return $rows;
+
+    }
+
+    public function filteredData($column, $direction, $keyword)
+    {
+
+        $rows = DB::table(':::tableName:::')
+                ->select(':::tableName:::.id as Id',
+                         ':::tableName:::.name as Name',
+                         ':::tableName:::.slug as Slug',
+                         ':::parentsTableName:::.:::parentFieldName::: as :::parent:::',
+                         ':::parentsTableName:::.id as :::parent:::Id',
+                         ':::parentsTableName:::.slug as :::parent:::Slug',
+                         DB::raw('DATE_FORMAT(:::tableName:::.created_at,
+                                 "%m-%d-%Y") as Created'))
+                ->leftJoin(':::parentsTableName:::', ':::parent_id:::', '=', ':::parentsTableName:::.id')
+                ->where(':::tableName:::.:::field_name:::', 'like', '%' . $keyword . '%')
+                ->orWhere(':::parentsTableName:::.name', 'like', '%' . $keyword . '%')
+                ->orderBy($column, $direction)
+                ->paginate(10);
+
+            return $rows;
+
+    }
+
+}

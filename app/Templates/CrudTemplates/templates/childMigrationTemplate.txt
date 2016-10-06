@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBoomletsTable extends Migration
+class Create:::childMigrationModel:::Table extends Migration
 {
     /**
      * Run the migrations.
@@ -15,10 +15,10 @@ class CreateBoomletsTable extends Migration
     public function up()
     {
 
-        Schema::create('boomlets', function (Blueprint $table) {
+        Schema::create(':::childsTableName:::', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name', 30)->unique();
-            $table->integer('boom_id')->unsigned();
+            $table->string(':::field_name:::', 30)->unique();
+            $table->integer(':::parent_id:::')->unsigned();
             $table->timestamps();
         });
 
@@ -33,7 +33,7 @@ class CreateBoomletsTable extends Migration
     public function down()
     {
 
-        Schema::drop('boomlets');
+        Schema::drop(':::childsTableName:::');
 
     }
 }

@@ -1,14 +1,11 @@
 /** This file is for the calls to Vue.js components */
 
+
 /** Begin Widget Grid Component Call */
 
 Vue.component('widget-grid', require('./components/WidgetGrid.vue'));
 
 /** End Widget Grid Component Call */
-
-
-
-
 /** Begin Category Grid Component Call */
 
 Vue.component('category-grid', require('./components/CategoryGrid.vue'));
@@ -19,20 +16,13 @@ Vue.component('category-grid', require('./components/CategoryGrid.vue'));
 Vue.component('subcategory-grid', require('./components/SubcategoryGrid.vue'));
 
 /** End Subcategory Grid Component Call */
+/** Begin :::upperCaseModelName::: Grid Component Call */
 
+Vue.component('boom-grid', require('./components/:::upperCaseModelName:::Grid.vue'));
 
-
-
-
-
-
+/** End :::upperCaseModelName::: Grid Component Call */
 /** Begin Boom Grid Component Call */
 
 Vue.component('boom-grid', require('./components/BoomGrid.vue'));
 
 /** End Boom Grid Component Call */
-/** Begin Boomlet Grid Component Call */
-
-Vue.component('boomlet-grid', require('./components/BoomletGrid.vue'));
-
-/** End Boomlet Grid Component Call */

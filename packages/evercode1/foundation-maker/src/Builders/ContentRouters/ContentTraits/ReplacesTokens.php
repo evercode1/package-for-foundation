@@ -17,11 +17,13 @@ trait ReplacesTokens
         return $content;
     }
 
-    public function mergeUniqueTokens($tokens, $customTokens)
+    public function mergeTokens($tokens, $customTokens)
     {
 
 
-        return $tokens = array_unique (array_merge ($tokens, $customTokens));
+        $tokens = array_merge($tokens, $customTokens);
+
+        return $tokens;
 
 
     }

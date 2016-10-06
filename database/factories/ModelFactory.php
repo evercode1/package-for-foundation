@@ -23,7 +23,6 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 });
 
 
-
 // Begin Widget Factory
 
 $factory->define(App\Widget::class, function (Faker\Generator $faker) {
@@ -41,8 +40,6 @@ $factory->define(App\Widget::class, function (Faker\Generator $faker) {
 });
 
 // End Widget Factory
-
-
 // Begin Category Factory
 
 $factory->define(App\Category::class, function (Faker\Generator $faker) {
@@ -78,13 +75,23 @@ $factory->define(App\Subcategory::class, function (Faker\Generator $faker) {
 });
 
 // End Subcategory Factory
+// Begin :::upperCaseModelName::: Factory
 
+$factory->define(App\:::upperCaseModelName:::::class, function (Faker\Generator $faker) {
 
+        $uniqueWord = $faker->unique()->word;
+        $slug = str_slug($uniqueWord, "-");
 
+    return [
 
+        'name' => $uniqueWord,
+        'slug' => $slug,
 
+    ];
 
+});
 
+// End :::upperCaseModelName::: Factory
 // Begin Boom Factory
 
 $factory->define(App\Boom::class, function (Faker\Generator $faker) {
@@ -102,16 +109,3 @@ $factory->define(App\Boom::class, function (Faker\Generator $faker) {
 });
 
 // End Boom Factory
-// Begin Boomlet Factory
-
-$factory->define(App\Boomlet::class, function (Faker\Generator $faker) {
-    return [
-
-        'name' => $faker->unique()->word,
-        'boom_id' => $faker->numberBetween($min = 1, $max = 4),
-
-    ];
-
-});
-
-// End Boomlet Factory

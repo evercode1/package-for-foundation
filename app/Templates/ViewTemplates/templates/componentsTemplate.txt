@@ -1,0 +1,6 @@
+
+/** Begin :::upperCaseModelName::: Grid Component Call */
+
+Vue.component(':::gridName:::', require('./components/:::upperCaseModelName:::Grid.vue'));
+
+/** End :::upperCaseModelName::: Grid Component Call */

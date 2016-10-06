@@ -1,8 +1,8 @@
-@extends('layouts.master')
+@extends('layouts.:::masterPageName:::')
 
 @section('title')
 
-    <title>Widget</title>
+    <title>:::upperCaseModelName:::</title>
 
 @endsection
 
@@ -10,11 +10,11 @@
 
         <ol class='breadcrumb'>
         <li><a href='/'>Home</a></li>
-        <li><a href='/widget'>Widgets</a></li>
-        <li><a href='/widget/{{ $widget->id }}'>{{ $widget->name }}</a></li>
+        <li><a href=':::modelRoute:::'>:::modelsUpperCase:::</a></li>
+        <li><a href=':::modelRoute:::/{{ $:::modelId::: }}'>{{ $:::modelAttribute::: }}</a></li>
         </ol>
 
-        <h1>Widget Details</h1>
+        <h1>:::upperCaseModelName::: Details</h1>
 
         <hr/>
 
@@ -34,12 +34,12 @@
 
 
                     <tr>
-                        <td>{{ $widget->id }} </td>
-                        <td> <a href="/widget/{{ $widget->id }}/edit">
-                                {{ $widget->name }}</a></td>
-                        <td>{{ $widget->created_at }}</td>
+                        <td>{{ $:::modelId::: }} </td>
+                        <td> <a href=":::modelRoute:::/{{ $:::modelId::: }}/edit">
+                                {{ $:::modelAttribute::: }}</a></td>
+                        <td>{{ $:::createdAt::: }}</td>
 
-                        <td> <a href="/widget/{{ $widget->id }}/edit">
+                        <td> <a href=":::modelRoute:::/{{ $:::modelId::: }}/edit">
 
                                 <button type="button" class="btn btn-default">Edit</button></a></td>
 
@@ -48,7 +48,7 @@
                         <div class="form-group">
 
                         <form class="form" role="form" method="POST"
-                         action="{{ url('/widget/'. $widget->id) }}">
+                         action="{{ url(':::modelRoute:::/'. $:::modelId:::) }}">
 
                         <input type="hidden" name="_method" value="delete">
 
